@@ -8,7 +8,7 @@ class MainApplication : Application() {
 
     object appComponent{
         val component by lazy {
-            DaggerAppsComponent.builder().application(MainApplication()).build()
+            DaggerAppsComponent.create()
         }
     }
     override fun onCreate() {

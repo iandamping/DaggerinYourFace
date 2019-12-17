@@ -9,7 +9,6 @@ import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.MainApplication.appComponent.component
 import com.junemon.daggerin.R
 import com.junemon.daggerin.di.component.ActivityComponent
-import com.junemon.daggerin.di.component.DaggerActivityComponent
 import com.junemon.daggerin.di.module.MainPresenterModule
 import com.junemon.daggerin.model.GamesEntity
 import javax.inject.Inject
@@ -19,11 +18,9 @@ class MainActivity : AppCompatActivity(), MainView {
     private val TAG = "MainActivity"
 
     private val activityComponent: ActivityComponent by lazy {
-      DaggerActivityComponent.builder()
-          .buildAppComponent(appComponent = component)
-          .buildPresenter(MainPresenterModule(this))
-          .build()
+        component.getActivityComponent(MainPresenterModule(this))
     }
+
     @Inject
     lateinit var presenter: MainPresenter
 
