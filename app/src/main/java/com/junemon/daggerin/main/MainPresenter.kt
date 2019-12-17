@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class MainPresenter @Inject constructor(view: MainView,private val api:ApiInterface) : BasePresenter<MainView>(view) {
     private val TAG = "MainPresenter"
-    
+
     fun getData() {
         try {
             requireNotNull(api){

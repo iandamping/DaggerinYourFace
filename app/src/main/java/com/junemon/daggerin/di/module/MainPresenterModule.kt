@@ -1,6 +1,5 @@
 package com.junemon.daggerin.di.module
 
-import com.junemon.daggerin.di.module.NetworkModule.Companion.provideRetrofit
 import com.junemon.daggerin.main.MainPresenter
 import com.junemon.daggerin.main.MainView
 import com.junemon.daggerin.network.ApiInterface

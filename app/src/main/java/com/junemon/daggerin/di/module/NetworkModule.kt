@@ -14,10 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-class NetworkModule {
+object NetworkModule {
 
-    @Module
-    companion object{
         @Provides
         @JvmStatic
         fun provideOkHttpClient(): OkHttpClient {
@@ -55,7 +53,6 @@ class NetworkModule {
         fun provideApiInterface(): ApiInterface {
             return provideRetrofit().create(ApiInterface::class.java)
         }
-    }
 
 
 }

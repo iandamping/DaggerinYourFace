@@ -31,7 +31,7 @@ class MainAdapter(
         fun bindView(data: GamesEntity, clickListener: (GamesEntity) -> Unit) {
             containerView?.apply {
                 tvText.text = data.name
-                Glide.with(ivImages.context).load(data.backgroundImage)
+                Glide.with(ivImages.context).load(data.backgroundImage).into(ivImages)
             }
             itemView.setOnClickListener {
                 clickListener(data)
