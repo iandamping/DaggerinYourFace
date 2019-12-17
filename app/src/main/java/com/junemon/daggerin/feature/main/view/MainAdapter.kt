@@ -1,4 +1,4 @@
-package com.junemon.daggerin.main
+package com.junemon.daggerin.feature.main.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,9 @@ class MainAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflaters =
             LayoutInflater.from(parent.context).inflate(R.layout.item_games, parent, false)
-        return MainViewHolder(inflaters)
+        return MainViewHolder(
+            inflaters
+        )
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {

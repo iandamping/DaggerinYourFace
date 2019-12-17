@@ -1,10 +1,9 @@
-package com.junemon.daggerin.di.component
+package com.junemon.daggerin.feature.main.component
 
-import com.junemon.daggerin.di.module.MainPresenterModule
-import com.junemon.daggerin.main.MainActivity
-import com.junemon.daggerin.main.MainPresenter
+import com.junemon.daggerin.feature.main.module.MainActivityModule
+import com.junemon.daggerin.feature.main.view.MainActivity
+import com.junemon.daggerin.feature.main.view.MainPresenter
 import com.junemon.daggerin.tutorial.dagger.scope.PerActivity
-import dagger.Component
 import dagger.Subcomponent
 
 /*@PerActivity
@@ -25,10 +24,10 @@ interface ActivityComponent {
 }*/
 
 @PerActivity
-@Subcomponent(modules = [MainPresenterModule::class])
+@Subcomponent(modules = [MainActivityModule::class])
 interface MainActivityComponent {
 
-    fun getMainPresenter():MainPresenter
+    fun getMainPresenter(): MainPresenter
 
     fun inject(activity: MainActivity)
 

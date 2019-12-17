@@ -1,4 +1,4 @@
-package com.junemon.daggerin.main
+package com.junemon.daggerin.feature.publisher.view
 
 import com.ian.app.helper.util.timberLogE
 import com.junemon.daggerin.base.BasePresenter
@@ -7,8 +7,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(view: MainView,private val api:ApiInterface) : BasePresenter<MainView>(view) {
-    private val TAG = "MainPresenter"
+class PublisherPresenter @Inject constructor(
+    publisherView: PublisherView,
+    private val api: ApiInterface
+) : BasePresenter<PublisherView>(publisherView) {
+
+    private val TAG = "PublisherPresenter"
+
 
     fun getData() {
         try {
@@ -16,7 +21,7 @@ class MainPresenter @Inject constructor(view: MainView,private val api:ApiInterf
                 "api interface is null or not initialized yet"
             }
             compositeDisposable.add(
-                api.getGames().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                api.getPublisher().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
                         setDialogShow(false)
                     }
