@@ -26,7 +26,7 @@ interface ActivityComponent {
 
 @PerActivity
 @Subcomponent(modules = [MainPresenterModule::class])
-interface ActivityComponent {
+interface MainActivityComponent {
 
     fun getMainPresenter():MainPresenter
 

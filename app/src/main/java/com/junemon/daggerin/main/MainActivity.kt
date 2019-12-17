@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.MainApplication.appComponent.component
 import com.junemon.daggerin.R
-import com.junemon.daggerin.di.component.ActivityComponent
+import com.junemon.daggerin.di.component.MainActivityComponent
 import com.junemon.daggerin.di.module.MainPresenterModule
 import com.junemon.daggerin.model.GamesEntity
 import javax.inject.Inject
@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private val TAG = "MainActivity"
 
-    private val activityComponent: ActivityComponent by lazy {
-        component.getActivityComponent(MainPresenterModule(this))
+    private val mainActivityComponent: MainActivityComponent by lazy {
+        component.getMainActivityComponent(MainPresenterModule(this))
     }
 
     @Inject
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityComponent.inject(this)
+        mainActivityComponent.inject(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         presenter.apply {
             attachLifecycle(this@MainActivity)

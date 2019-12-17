@@ -2,6 +2,7 @@ package com.junemon.daggerin.di.module
 
 import com.google.gson.GsonBuilder
 import com.junemon.daggerin.BuildConfig
+import com.junemon.daggerin.network.ApiInterface
 import dagger.Module
 import dagger.Provides
 import okhttp3.Dispatcher
@@ -48,11 +49,12 @@ class NetworkModule {
                 .build()
         }
 
-       /* @Provides
+
+        @Provides
         @JvmStatic
         fun provideApiInterface(): ApiInterface {
             return provideRetrofit().create(ApiInterface::class.java)
-        }*/
+        }
     }
 
 

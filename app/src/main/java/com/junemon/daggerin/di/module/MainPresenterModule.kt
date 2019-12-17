@@ -11,11 +11,6 @@ import dagger.Provides
 class MainPresenterModule(private val mainView: MainView) {
 
     @Provides
-    fun provideApiInterface(): ApiInterface {
-        return provideRetrofit().create(ApiInterface::class.java)
-    }
-
-    @Provides
     fun provideMainView(): MainView = mainView
 
     @Provides
