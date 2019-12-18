@@ -1,21 +1,20 @@
 package com.junemon.daggerin.di.component
 
-import com.junemon.daggerin.MainApplication
-import com.junemon.daggerin.di.module.CommonHelperModule
-import com.junemon.daggerin.di.module.GlideModule
+import com.junemon.daggerin.di.module.*
 import com.junemon.daggerin.feature.main.module.MainActivityModule
-import com.junemon.daggerin.di.module.NetworkModule
-import com.junemon.daggerin.di.module.RetrofitHelperModule
 import com.junemon.daggerin.feature.publisher.module.PublisherActivityModule
 import com.junemon.daggerin.di.scope.ApplicationScope
 import com.junemon.daggerin.feature.main.component.MainActivityComponent
 import com.junemon.daggerin.feature.publisher.component.PublisherActivityComponent
 import com.junemon.daggerin.util.interfaces.CommonHelper
+import com.junemon.daggerin.util.interfaces.LoadImageHelper
+import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import com.junemon.daggerin.util.interfaces.RetrofitHelper
 import dagger.Component
 
 @ApplicationScope
-@Component(modules = [CommonHelperModule::class,GlideModule::class, NetworkModule::class,RetrofitHelperModule::class])
+@Component(modules = [CommonHelperModule::class, LoadImageHelperModule::class, NetworkModule::class,
+    RetrofitHelperModule::class,RecyclerHelperModule::class])
 interface AppsComponent {
 
     /* ini adalah cara kita create subcomponent,
@@ -25,9 +24,13 @@ interface AppsComponent {
 
     fun getPublisherActivityComponent(publisherActivityModule: PublisherActivityModule): PublisherActivityComponent
 
-    fun getCommonHelper():CommonHelper
+    fun getCommonHelper(): CommonHelper
 
-    fun getRetrofitHelper():RetrofitHelper
+    fun getRetrofitHelper(): RetrofitHelper
+
+  /*  fun getRecyclerHelper(): RecyclerHelper
+
+    fun getLoadImageHelper():LoadImageHelper*/
 
 //    fun getApiInterface():ApiInterface
 

@@ -47,10 +47,12 @@ abstract class BasePresenter<out View>(private val viewsPassed:View) : Lifecycle
         val inflater = context.layoutInflater
         val dialogView = inflater.inflate(R.layout.custom_loading, null)
         dialogBuilder.setView(dialogView)
-        alert = dialogBuilder.create()
-        alert.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alert.setCancelable(false)
-        alert.setCanceledOnTouchOutside(false)
+        alert = dialogBuilder.create().apply {
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
+        }
+
     }
 
     protected fun setDialogShow(status: Boolean) {
