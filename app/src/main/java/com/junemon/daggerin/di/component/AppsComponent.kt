@@ -26,13 +26,8 @@ interface AppsComponent {
 
     fun getCommonHelper(): CommonHelper
 
-    fun getRetrofitHelper(): RetrofitHelper
+//    fun getRetrofitHelper(): RetrofitHelper
 
-  /*  fun getRecyclerHelper(): RecyclerHelper
-
-    fun getLoadImageHelper():LoadImageHelper*/
-
-//    fun getApiInterface():ApiInterface
 
     /*@Component.Builder
     interface Builder {

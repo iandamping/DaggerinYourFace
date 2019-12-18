@@ -1,5 +1,6 @@
 package com.junemon.daggerin.feature.publisher.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -8,14 +9,20 @@ import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication.appComponent.applicationComponent
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
+import com.junemon.daggerin.feature.main.view.MainActivity
 import com.junemon.daggerin.feature.publisher.module.PublisherActivityModule
+import com.junemon.daggerin.model.GameCallback
+import com.junemon.daggerin.model.PublisherCallback
 import com.junemon.daggerin.model.PublishersEntity
+import kotlinx.android.synthetic.main.item_games.view.*
+import kotlinx.android.synthetic.main.item_publisher.*
 import javax.inject.Inject
 
 class PublisherActivity : AppCompatActivity(),
     PublisherView {
+    @Inject
+    lateinit var presenter: PublisherPresenter
 
-    @Inject lateinit var presenter: PublisherPresenter
     private val publisherComponent by lazy {
         applicationComponent.getPublisherActivityComponent(
             PublisherActivityModule(
@@ -23,7 +30,13 @@ class PublisherActivity : AppCompatActivity(),
             )
         )
     }
-    private val adapter: PublisherAdapter by lazy { PublisherAdapter() }
+    private val recyclerHelper by lazy {
+        publisherComponent.getRecyclerHelper()
+    }
+
+    private val loadImageHelper by lazy {
+        publisherComponent.getLoadImageHelper()
+    }
     private lateinit var binding: ActivityPublisherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +50,28 @@ class PublisherActivity : AppCompatActivity(),
     }
 
     override fun observeData(data: List<PublishersEntity>) {
-        adapter.submitList(data)
+
         if (::binding.isInitialized) {
             binding.apply {
-                rvMain.layoutManager = LinearLayoutManager(this@PublisherActivity)
-                rvMain.adapter = adapter
+                recyclerHelper.run {
+                    rvMain.setUpVerticalListAdapter(items = data,
+                        diffUtil = PublisherCallback.publisherDiffCallbacks,
+                        layoutResId = R.layout.item_publisher,
+                        bindHolder = {
+                            tvText.text = it.name
+                            loadImageHelper.run {
+                                ivImages.loadWithGlide(it.imageBackground)
+                            }
+                        }, itemClick = {
+                            val intent by lazy {
+                                Intent(
+                                    this@PublisherActivity,
+                                    MainActivity::class.java
+                                )
+                            }
+                            startActivity(intent)
+                        })
+                }
             }
         }
     }

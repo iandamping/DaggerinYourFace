@@ -14,6 +14,6 @@ class MainActivityModule(private val mainView: MainView) {
     fun provideMainView(): MainView = mainView
 
     @Provides
-    fun provideMainPresenter(mainView: MainView, api:ApiInterface) =
-        MainPresenter(mainView, api)
+    fun provideMainPresenter(mainView: MainView, api:ApiInterface,retrofitHelper: RetrofitHelper) =
+        MainPresenter(mainView, api,retrofitHelper)
 }

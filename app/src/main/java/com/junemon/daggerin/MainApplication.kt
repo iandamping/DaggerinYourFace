@@ -14,9 +14,6 @@ class MainApplication : Application() {
         val commonHelper by lazy {
             DaggerAppsComponent.create().getCommonHelper()
         }
-        val retrofitHelper by lazy {
-            DaggerAppsComponent.create().getRetrofitHelper()
-        }
     }
     override fun onCreate() {
         super.onCreate()
