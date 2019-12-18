@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication.appComponent.component
+import com.junemon.daggerin.MainApplication.appComponent.applicationComponent
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.feature.publisher.module.PublisherActivityModule
@@ -17,7 +17,7 @@ class PublisherActivity : AppCompatActivity(),
 
     @Inject lateinit var presenter: PublisherPresenter
     private val publisherComponent by lazy {
-        component.getPublisherActivityComponent(
+        applicationComponent.getPublisherActivityComponent(
             PublisherActivityModule(
                 this
             )

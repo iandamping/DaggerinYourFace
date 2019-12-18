@@ -11,7 +11,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object AppsModule {
+object GlideModule {
     @Provides
     @JvmStatic
     @Singleton

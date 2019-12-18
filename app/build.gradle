@@ -69,8 +69,12 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3LogginInterceptorVer"
     implementation "com.squareup.okhttp3:okhttp:$okHttp3Ver"
     implementation "com.google.code.gson:gson:$gson_version"
-    implementation "com.github.iandamping:CommonHelper:$commonHelper_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxjava2Ver"
+//    implementation "com.github.iandamping:CommonHelper:$commonHelper_version"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.1"
+
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.google.dagger:dagger:2.25.2'
     kapt 'com.google.dagger:dagger-compiler:2.25.2'

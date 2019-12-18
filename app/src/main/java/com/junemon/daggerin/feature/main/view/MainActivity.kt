@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.databinding.ActivityMainBinding
-import com.junemon.daggerin.MainApplication.appComponent.component
+import com.junemon.daggerin.MainApplication.appComponent.applicationComponent
 import com.junemon.daggerin.R
 import com.junemon.daggerin.feature.main.component.MainActivityComponent
 import com.junemon.daggerin.feature.main.module.MainActivityModule
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(),
     private val TAG = "MainActivity"
 
     private val mainActivityComponent: MainActivityComponent by lazy {
-        component.getMainActivityComponent(
+        applicationComponent.getMainActivityComponent(
             MainActivityModule(
                 this
             )
