@@ -8,10 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainActivityModule(private val mainView: MainView) {
-
-    @Provides
-    fun provideMainView(): MainView = mainView
+class MainActivityModule() {
 
     @Provides
     fun provideMainPresenter(mainView: MainView, api:ApiInterface,retrofitHelper: RetrofitHelper) =

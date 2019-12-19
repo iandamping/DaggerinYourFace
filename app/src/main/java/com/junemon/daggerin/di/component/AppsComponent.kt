@@ -14,13 +14,15 @@ import dagger.Component
 
 @ApplicationScope
 @Component(modules = [CommonHelperModule::class, LoadImageHelperModule::class, NetworkModule::class,
-    RetrofitHelperModule::class,RecyclerHelperModule::class])
+    RetrofitHelperModule::class,RecyclerHelperModule::class,AppSubComponent::class])
 interface AppsComponent {
 
     /* ini adalah cara kita create subcomponent,
     *  yang dimana ActivityComponent merupakan subComponent dari appcomponent
     *  kalau module kita punya constructor cara createnya pake ini */
-    fun getMainActivityComponent(mainActivityModule: MainActivityModule): MainActivityComponent
+//    fun getMainActivityComponent(mainActivityModule: MainActivityModule): MainActivityComponent
+
+    fun getMainActivityComponent():MainActivityComponent.Factory
 
     fun getPublisherActivityComponent(publisherActivityModule: PublisherActivityModule): PublisherActivityComponent
 
