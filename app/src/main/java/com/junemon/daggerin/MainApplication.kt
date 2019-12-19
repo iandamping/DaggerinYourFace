@@ -1,24 +1,27 @@
 package com.junemon.daggerin
 
 import android.app.Application
+import com.junemon.daggerin.di.component.AppsComponent
 import com.junemon.daggerin.di.component.DaggerAppsComponent
 import timber.log.Timber
 
-class MainApplication : Application() {
-    private val TAG = "MainApplication"
+open class MainApplication : Application() {
 
-    object appComponent{
-        val applicationComponent by lazy {
-            DaggerAppsComponent.create()
-        }
-        val commonHelper by lazy {
-            DaggerAppsComponent.create().getCommonHelper()
-        }
+    val appComponent: AppsComponent by lazy {
+        initializeComponent()
     }
+
+
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    open fun initializeComponent(): AppsComponent {
+        // Creates an instance of AppComponent using its Factory constructor
+        // We pass the application that will be used as Context in the graph
+        return DaggerAppsComponent.factory().injectApplication(this)
     }
 }

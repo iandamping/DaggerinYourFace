@@ -2,6 +2,7 @@ package com.junemon.daggerin.model
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import com.junemon.daggerin.db.game.GameDbEntity
 
 data class ShortScreenshotsItemEntity(
     @SerializedName("image")
@@ -165,12 +166,17 @@ data class ParentPlatformsItem(
     val platform: PlatformEntity
 )
 
-object GameCallback{
-    val gamesDiffCallbacks = object : DiffUtil.ItemCallback<GamesEntity>() {
-        override fun areItemsTheSame(oldItem: GamesEntity, newItem: GamesEntity): Boolean =
-            oldItem.id == newItem.id
+fun GamesEntity.mapToDatabase():GameDbEntity = GameDbEntity(name,backgroundImage)
 
-        override fun areContentsTheSame(oldItem: GamesEntity, newItem: GamesEntity): Boolean =
+fun List<GamesEntity>.mapToDatabase():List<GameDbEntity> = map { it.mapToDatabase() }
+
+
+object GameCallback{
+    val gamesDiffCallbacks = object : DiffUtil.ItemCallback<GameDbEntity>() {
+        override fun areItemsTheSame(oldItem: GameDbEntity, newItem: GameDbEntity): Boolean =
+            oldItem.gameName == newItem.gameName
+
+        override fun areContentsTheSame(oldItem: GameDbEntity, newItem: GameDbEntity): Boolean =
             oldItem == newItem
     }
 }

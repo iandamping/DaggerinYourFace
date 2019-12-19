@@ -33,7 +33,7 @@ interface ActivityComponent {
 interface MainActivityComponent {
 
     /*
-    we dont need this function anymore, dagger provide it for us to use
+    we dont need this function anymore, dagger provide this for us to use
     
     fun getRecyclerHelper(): RecyclerHelper
 
@@ -45,7 +45,7 @@ interface MainActivityComponent {
 
     @Subcomponent.Factory
     interface Factory {
-        fun injectView(@BindsInstance mainView: MainView): MainActivityComponent
+        fun inject(@BindsInstance mainView: MainView): MainActivityComponent
     }
 
 }

@@ -8,13 +8,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.junemon.daggerin.MainApplication.appComponent.commonHelper
 import com.junemon.daggerin.R
 import com.junemon.daggerin.util.layoutInflater
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import timber.log.Timber
 
 abstract class BasePresenter<out View>(private val viewsPassed:View) : LifecycleObserver{
     private val job by lazy { Job() }
@@ -29,9 +29,22 @@ abstract class BasePresenter<out View>(private val viewsPassed:View) : Lifecycle
         lifeCycleOwner.lifecycle.addObserver(this)
     }
 
+    protected  fun timberLogE(msg: String?) {
+        Timber.tag("#### timber logger ####").e(msg)
+    }
+
+    protected  fun timberLogD(msg: String?) {
+        Timber.tag("#### timber logger ####").d(msg)
+    }
+
+    protected  fun timberLogI(msg: String?) {
+        Timber.tag("#### timber logger ####").i(msg)
+    }
+
     protected fun view(): View {
         return viewsPassed
     }
+
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onViewDestroyed() {
@@ -39,7 +52,8 @@ abstract class BasePresenter<out View>(private val viewsPassed:View) : Lifecycle
     }
 
     private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
-        commonHelper.timberLogE(e.message ?: e.toString())
+        setDialogShow(true)
+        timberLogE(e.message ?: e.toString())
     }
 
     private fun setBaseDialog(context: Context) {
