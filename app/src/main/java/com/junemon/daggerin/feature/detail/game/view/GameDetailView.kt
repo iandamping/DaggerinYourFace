@@ -1,4 +1,4 @@
-package com.junemon.daggerin.feature.detail
+package com.junemon.daggerin.feature.detail.game.view
 
 import com.junemon.daggerin.model.game.GamesDetailEntity
 

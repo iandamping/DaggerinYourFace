@@ -1,4 +1,4 @@
-package com.junemon.daggerin.feature.detail
+package com.junemon.daggerin.feature.detail.publisher.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,49 +6,46 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.databinding.ActivityDetailGameBinding
-import com.junemon.daggerin.model.game.GamesDetailEntity
-import com.junemon.daggerin.util.Constant.intentDetailKey
+import com.junemon.daggerin.databinding.ActivityDetailPublisherBinding
+import com.junemon.daggerin.model.publisher.PublisherDetailEntity
+import com.junemon.daggerin.util.Constant
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
-import kotlinx.android.synthetic.main.item_games.view.*
 import javax.inject.Inject
 
-class GameDetailActivity:AppCompatActivity(), GameDetailView {
+class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
+    private val detailID by lazy { intent.getIntExtra(Constant.intentPublisherDetailKey,0) }
 
-    private val detailID by lazy { intent.getIntExtra(intentDetailKey,0) }
-    private lateinit var binding:ActivityDetailGameBinding
-
-    @Inject lateinit var presenter: GameDetailPresenter
+    @Inject
+    lateinit var presenter: PublisherDetailPresenter
 
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
+    private lateinit var binding: ActivityDetailPublisherBinding
+
     private fun daggerInjection() {
         (application as MainApplication)
-            .appComponent.getGamesDetailActivityComponent().inject(this).injectActivity(this)
+            .appComponent.getPublisherDetailActivityComponent().inject(this).injectActivity(this)
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         daggerInjection()
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_game)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_publisher)
         presenter.apply {
-            attachLifecycle(this@GameDetailActivity)
+            attachLifecycle(this@PublisherDetailActivity)
             getData(detailID)
         }
 
     }
-
-
-
-    override fun observeData(data: GamesDetailEntity) {
+    override fun observeData(data: PublisherDetailEntity) {
         if (::binding.isInitialized){
             binding.apply {
-                tvDesc.text = data.gameDescription
-                tvName.text = data.gameName
+                tvDesc.text = data.description
+                tvName.text = data.publisherName
                 loadImageHelper.run {
-                    ivImagesDetail.loadWithGlide(data.gameImage)
+                    ivImagesDetail.loadWithGlide(data.publisherImage)
                 }
             }
         }

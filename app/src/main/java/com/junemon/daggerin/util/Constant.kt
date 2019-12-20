@@ -13,5 +13,6 @@ internal fun ViewGroup.inflates(layout: Int): View {
 }
 
 object Constant{
-    const val intentDetailKey:String = "intent detail"
+    const val intentGamesDetailKey:String = "intent games detail"
+    const val intentPublisherDetailKey:String = "intent gamepublishers detail"
 }

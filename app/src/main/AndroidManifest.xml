@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.junemon.daggerin.feature.main.view.MainActivity">
+        <activity android:name=".feature.publisher.view.PublisherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.publisher.view.PublisherActivity"/>
-        <activity android:name=".feature.detail.GameDetailActivity"/>
+        <activity android:name=".feature.detail.game.view.GameDetailActivity"/>
+        <activity android:name=".feature.detail.publisher.view.PublisherDetailActivity"/>
     </application>
 
 </manifest>

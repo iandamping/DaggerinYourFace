@@ -1,8 +1,9 @@
 package com.junemon.daggerin.network
 
 import com.junemon.daggerin.model.game.GamesEntity
-import com.junemon.daggerin.model.PublishersEntity
+import com.junemon.daggerin.model.publisher.PublishersEntity
 import com.junemon.daggerin.model.game.GamesDetailEntity
+import com.junemon.daggerin.model.publisher.PublisherDetailEntity
 import com.junemon.daggerin.network.ApiConstant.games
 import com.junemon.daggerin.network.ApiConstant.publisher
 import com.junemon.gamesapi.data.datasource.model.ResultEntity
@@ -20,6 +21,9 @@ interface ApiInterface {
 
     @GET(publisher)
     fun getPublisher(): Call<ResultEntity<PublishersEntity>>
+
+    @GET("$publisher/{id}")
+    fun getDetailPublisher(@Path("id") publisherId:Int):Call<PublisherDetailEntity>
 }
 
 object ApiConstant {

@@ -9,8 +9,10 @@ import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.db.publisher.PublisherDbEntity
+import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailActivity
 import com.junemon.daggerin.feature.main.view.MainActivity
-import com.junemon.daggerin.model.PublisherCallback
+import com.junemon.daggerin.model.publisher.PublisherCallback
+import com.junemon.daggerin.util.Constant.intentPublisherDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_publisher.view.*
@@ -61,9 +63,10 @@ class PublisherActivity : AppCompatActivity(),
                             val intent by lazy {
                                 Intent(
                                     this@PublisherActivity,
-                                    MainActivity::class.java
+                                    PublisherDetailActivity::class.java
                                 )
                             }
+                            intent.putExtra(intentPublisherDetailKey,publisherId)
                             startActivity(intent)
                         })
                 }

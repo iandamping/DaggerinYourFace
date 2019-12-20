@@ -9,10 +9,9 @@ import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
-import com.junemon.daggerin.feature.detail.GameDetailActivity
-import com.junemon.daggerin.feature.publisher.view.PublisherActivity
+import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
 import com.junemon.daggerin.model.game.GameCallback
-import com.junemon.daggerin.util.Constant.intentDetailKey
+import com.junemon.daggerin.util.Constant.intentGamesDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_games.view.*
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity(),
                                     GameDetailActivity::class.java
                                 )
                             }
-                            intent.putExtra(intentDetailKey,gameId)
+                            intent.putExtra(intentGamesDetailKey,gameId)
                             startActivity(intent)
                         })
                 }

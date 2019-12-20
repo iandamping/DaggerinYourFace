@@ -1,4 +1,4 @@
-package com.junemon.daggerin.model
+package com.junemon.daggerin.model.publisher
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName

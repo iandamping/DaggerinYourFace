@@ -1,16 +1,17 @@
-package com.junemon.daggerin.feature.detail
+package com.junemon.daggerin.feature.detail.publisher.view
 
 import com.junemon.daggerin.base.BasePresenter
+import com.junemon.daggerin.feature.detail.game.view.GameDetailView
 import com.junemon.daggerin.network.ApiInterface
 import com.junemon.daggerin.util.interfaces.RetrofitHelper
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class GameDetailPresenter @Inject constructor(
-    view: GameDetailView,
+class PublisherDetailPresenter @Inject constructor(
+    view: PublisherDetailView,
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper
-) : BasePresenter<GameDetailView>(view) {
+):BasePresenter<PublisherDetailView>(view) {
 
     fun getData(id:Int){
         customScope.launch {
@@ -20,7 +21,7 @@ class GameDetailPresenter @Inject constructor(
             try {
                 setDialogShow(false)
                 retrofitHelper.run {
-                    val data = api.getDetailGames(id).doOneShot()
+                    val data = api.getDetailPublisher(id).doOneShot()
                     view().observeData(data)
                     setDialogShow(true)
                 }
