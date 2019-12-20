@@ -1,8 +1,8 @@
 package com.junemon.daggerin.feature.main.view
 
 import com.junemon.daggerin.base.BasePresenter
-import com.junemon.daggerin.model.GamesEntity
-import com.junemon.daggerin.model.mapToDatabase
+import com.junemon.daggerin.model.game.GamesEntity
+import com.junemon.daggerin.model.game.mapToDatabase
 import com.junemon.daggerin.network.ApiInterface
 import com.junemon.daggerin.util.interfaces.GameDaoHelper
 import com.junemon.daggerin.util.interfaces.RetrofitHelper

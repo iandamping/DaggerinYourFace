@@ -3,6 +3,7 @@ package com.junemon.daggerin.di.component
 import android.app.Application
 import com.junemon.daggerin.di.module.*
 import com.junemon.daggerin.di.scope.ApplicationScope
+import com.junemon.daggerin.feature.detail.component.GameDetailActivityComponent
 import com.junemon.daggerin.feature.main.component.MainActivityComponent
 import com.junemon.daggerin.feature.publisher.component.PublisherActivityComponent
 import dagger.BindsInstance
@@ -28,6 +29,8 @@ interface AppsComponent {
     fun getMainActivityComponent(): MainActivityComponent.Factory
 
     fun getPublisherActivityComponent(): PublisherActivityComponent.Factory
+
+    fun getGamesDetailActivityComponent():GameDetailActivityComponent.Factory
 
     /*//Ini adalah cara sub-component dari coding in flow
     fun getPublisherActivityComponent(publisherActivityModule: PublisherActivityModule): PublisherActivityComponent*/

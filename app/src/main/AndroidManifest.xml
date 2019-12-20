@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.publisher.view.PublisherActivity"/>
+        <activity android:name=".feature.detail.GameDetailActivity"/>
     </application>
 
 </manifest>

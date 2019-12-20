@@ -2,6 +2,7 @@ package com.junemon.daggerin.feature.publisher.view
 
 import com.junemon.daggerin.base.BasePresenter
 import com.junemon.daggerin.model.PublishersEntity
+import com.junemon.daggerin.model.game.mapToDatabase
 import com.junemon.daggerin.model.mapToDatabase
 import com.junemon.daggerin.network.ApiInterface
 import com.junemon.daggerin.util.interfaces.PublisherDaoHelper

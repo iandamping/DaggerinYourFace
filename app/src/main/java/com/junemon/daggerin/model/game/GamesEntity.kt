@@ -1,4 +1,4 @@
-package com.junemon.daggerin.model
+package com.junemon.daggerin.model.game
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
@@ -166,7 +166,7 @@ data class ParentPlatformsItem(
     val platform: PlatformEntity
 )
 
-fun GamesEntity.mapToDatabase(): GameDbEntity = GameDbEntity(name, backgroundImage)
+fun GamesEntity.mapToDatabase(): GameDbEntity = GameDbEntity(id,name, backgroundImage)
 
 fun List<GamesEntity>.mapToDatabase(): List<GameDbEntity> = map { it.mapToDatabase() }
 

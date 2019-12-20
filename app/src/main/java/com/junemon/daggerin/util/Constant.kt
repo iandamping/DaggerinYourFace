@@ -11,3 +11,7 @@ inline val Context.layoutInflater: android.view.LayoutInflater
 internal fun ViewGroup.inflates(layout: Int): View {
     return LayoutInflater.from(context).inflate(layout, this, false)
 }
+
+object Constant{
+    const val intentDetailKey:String = "intent detail"
+}

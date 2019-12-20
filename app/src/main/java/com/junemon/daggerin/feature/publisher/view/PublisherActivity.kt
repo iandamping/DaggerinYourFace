@@ -36,8 +36,8 @@ class PublisherActivity : AppCompatActivity(),
     private lateinit var binding: ActivityPublisherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         daggerInjection()
+        super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_publisher)
         presenter.apply {
             attachLifecycle(this@PublisherActivity)

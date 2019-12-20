@@ -53,7 +53,6 @@ abstract class BasePresenter<out View>(private val viewsPassed: View) : Lifecycl
 
     private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
         setDialogShow(true)
-        timberLogE(e.message ?: e.toString())
     }
 
     private fun setBaseDialog(context: Context) {
