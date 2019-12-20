@@ -32,6 +32,7 @@ abstract class BaseListAdapter<T>(
     protected open fun View.bind(item: T) {
     }
 
-    class MyListWithSliderViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
+    class MyListWithSliderViewHolder(override val containerView: View) :
+        RecyclerView.ViewHolder(containerView),
         LayoutContainer
 }

@@ -1,6 +1,5 @@
 package com.junemon.daggerin.util.interfaces
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
@@ -12,7 +11,7 @@ import android.widget.ImageView
  */
 interface LoadImageHelper {
     fun ImageView.loadWithGlideSmall(url: String?)
-    fun ImageView.loadWithGlideCustomSize(url: String?,width:Int, height:Int)
+    fun ImageView.loadWithGlideCustomSize(url: String?, width: Int, height: Int)
     fun ImageView.loadWithGlide(url: String?)
     fun ImageView.loadWithGlide(drawable: Drawable)
     fun ImageView.loadWithGlide(bitmap: Bitmap)

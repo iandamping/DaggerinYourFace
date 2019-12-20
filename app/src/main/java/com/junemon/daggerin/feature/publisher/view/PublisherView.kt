@@ -1,8 +1,8 @@
 package com.junemon.daggerin.feature.publisher.view
 
-import com.junemon.daggerin.model.PublishersEntity
+import com.junemon.daggerin.db.publisher.PublisherDbEntity
 
 interface PublisherView {
-    fun observeData(data:List<PublishersEntity>)
-    fun observeFailed(throws:Throwable)
+    fun observeData(data: List<PublisherDbEntity>)
+    fun observeFailed(throws: Throwable)
 }

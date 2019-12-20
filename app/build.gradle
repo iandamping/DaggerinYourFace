@@ -36,10 +36,6 @@ android {
        enabled true
     }
 
-    kapt {
-        generateStubs = true
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }

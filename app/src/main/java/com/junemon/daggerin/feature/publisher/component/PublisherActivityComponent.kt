@@ -1,22 +1,30 @@
 package com.junemon.daggerin.feature.publisher.component
 
+import com.junemon.daggerin.di.scope.PerActivities
 import com.junemon.daggerin.feature.publisher.module.PublisherActivityModule
 import com.junemon.daggerin.feature.publisher.view.PublisherActivity
-import com.junemon.daggerin.feature.publisher.view.PublisherPresenter
-import com.junemon.daggerin.tutorial.dagger.scope.PerActivity
-import com.junemon.daggerin.util.interfaces.LoadImageHelper
-import com.junemon.daggerin.util.interfaces.RecyclerHelper
+import com.junemon.daggerin.feature.publisher.view.PublisherView
+import dagger.BindsInstance
 import dagger.Subcomponent
 
-@PerActivity
+@PerActivities
 @Subcomponent(modules = [PublisherActivityModule::class])
 interface PublisherActivityComponent {
 
+    /*
+    we dont need this function anymore, dagger provide this for us to use
+    
     fun getRecyclerHelper(): RecyclerHelper
 
     fun getLoadImageHelper(): LoadImageHelper
 
     fun getPublisherPresenter(): PublisherPresenter
+*/
 
-    fun inject(activity: PublisherActivity)
+    fun injectActivity(activity: PublisherActivity)
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun inject(@BindsInstance publisherView: PublisherView): PublisherActivityComponent
+    }
 }

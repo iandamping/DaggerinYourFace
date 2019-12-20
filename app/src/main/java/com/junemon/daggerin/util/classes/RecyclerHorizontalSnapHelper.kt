@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
+
 class RecyclerHorizontalSnapHelper : LinearSnapHelper() {
     private var mVerticalHelper: OrientationHelper? = null
     private var mHorizontalHelper: OrientationHelper? = null
@@ -46,15 +47,15 @@ class RecyclerHorizontalSnapHelper : LinearSnapHelper() {
     }
 
     private fun getStartView(
-            layoutManager: RecyclerView.LayoutManager,
-            helper: OrientationHelper
+        layoutManager: RecyclerView.LayoutManager,
+        helper: OrientationHelper
     ): View? {
 
         if (layoutManager is LinearLayoutManager) {
             val firstChild = layoutManager.findFirstVisibleItemPosition()
 
             val isLastItem = layoutManager
-                    .findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1
+                .findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1
 
             if (firstChild == RecyclerView.NO_POSITION || isLastItem) {
                 return null
@@ -63,8 +64,8 @@ class RecyclerHorizontalSnapHelper : LinearSnapHelper() {
             val child = layoutManager.findViewByPosition(firstChild)
 
             return if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 && helper.getDecoratedEnd(
-                            child
-                    ) > 0
+                    child
+                ) > 0
             ) {
                 child
             } else {

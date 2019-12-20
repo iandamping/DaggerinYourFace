@@ -2,6 +2,7 @@ package com.junemon.daggerin.model
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import com.junemon.daggerin.db.publisher.PublisherDbEntity
 
 data class GamesItem(
     @SerializedName("added")
@@ -24,13 +25,24 @@ data class PublishersEntity(
     @SerializedName("image_background")
     val imageBackground: String = ""
 )
-object PublisherCallback{
 
-    val publisherDiffCallbacks = object : DiffUtil.ItemCallback<PublishersEntity>() {
-        override fun areItemsTheSame(oldItem: PublishersEntity, newItem: PublishersEntity): Boolean =
-            oldItem.id == newItem.id
+fun PublishersEntity.mapToDatabase(): PublisherDbEntity = PublisherDbEntity(name, imageBackground)
 
-        override fun areContentsTheSame(oldItem: PublishersEntity, newItem: PublishersEntity): Boolean =
+fun List<PublishersEntity>.mapToDatabase(): List<PublisherDbEntity> = map { it.mapToDatabase() }
+
+object PublisherCallback {
+
+    val publisherDiffCallbacks = object : DiffUtil.ItemCallback<PublisherDbEntity>() {
+        override fun areItemsTheSame(
+            oldItem: PublisherDbEntity,
+            newItem: PublisherDbEntity
+        ): Boolean =
+            oldItem.publisherName == newItem.publisherName
+
+        override fun areContentsTheSame(
+            oldItem: PublisherDbEntity,
+            newItem: PublisherDbEntity
+        ): Boolean =
             oldItem == newItem
     }
 }

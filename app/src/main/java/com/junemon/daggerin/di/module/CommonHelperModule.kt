@@ -9,5 +9,5 @@ import dagger.Module
 abstract class CommonHelperModule {
 
     @Binds
-    abstract fun bindsCommonHelper(commonHelper:CommonHelperImpl): CommonHelper
+    abstract fun bindsCommonHelper(commonHelper: CommonHelperImpl): CommonHelper
 }

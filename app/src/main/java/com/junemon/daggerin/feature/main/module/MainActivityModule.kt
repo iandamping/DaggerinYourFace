@@ -12,6 +12,11 @@ import dagger.Provides
 class MainActivityModule() {
 
     @Provides
-    fun provideMainPresenter(mainView: MainView, api:ApiInterface,retrofitHelper: RetrofitHelper,gameDaoHelper: GameDaoHelper) =
-        MainPresenter(mainView, api,retrofitHelper,gameDaoHelper)
+    fun provideMainPresenter(
+        mainView: MainView,
+        api: ApiInterface,
+        retrofitHelper: RetrofitHelper,
+        gameDaoHelper: GameDaoHelper
+    ) =
+        MainPresenter(mainView, api, retrofitHelper, gameDaoHelper)
 }

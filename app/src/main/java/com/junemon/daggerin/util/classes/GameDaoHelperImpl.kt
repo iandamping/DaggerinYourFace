@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GameDaoHelperImpl @Inject constructor(private val gameDao: GameDao) : GameDaoHelper {
 
-    override suspend fun insertGame(vararg  data:GameDbEntity) {
+    override suspend fun insertGame(vararg data: GameDbEntity) {
         gameDao.insertGame(*data)
     }
 

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.junemon.daggerin.db.GameDatabase
 import com.junemon.daggerin.db.game.GameDao
+import com.junemon.daggerin.db.publisher.PublisherDao
 import dagger.Module
 import dagger.Provides
 
@@ -23,6 +24,12 @@ object DatabaseModule {
     @JvmStatic
     fun provideGameDao(db: GameDatabase): GameDao {
         return db.gameDao()
+    }
+
+    @Provides
+    @JvmStatic
+    fun providePublisherDao(db: GameDatabase): PublisherDao {
+        return db.publisherDao()
     }
 
 }

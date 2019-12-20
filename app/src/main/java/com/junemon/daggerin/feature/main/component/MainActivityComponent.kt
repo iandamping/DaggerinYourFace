@@ -1,18 +1,15 @@
 package com.junemon.daggerin.feature.main.component
 
-import com.bumptech.glide.RequestManager
+import com.junemon.daggerin.di.scope.PerActivities
 import com.junemon.daggerin.feature.main.module.MainActivityModule
 import com.junemon.daggerin.feature.main.view.MainActivity
-import com.junemon.daggerin.feature.main.view.MainPresenter
 import com.junemon.daggerin.feature.main.view.MainView
-import com.junemon.daggerin.tutorial.dagger.scope.PerActivity
-import com.junemon.daggerin.util.interfaces.LoadImageHelper
-import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import dagger.BindsInstance
 import dagger.Subcomponent
 
 /*@PerActivity
 @Subcomponent(dependencies = [AppsComponent::class],modules = [MainPresenterModule::class])
+//ini adalah cara subcomponent dari coding in flow
 interface ActivityComponent {
 
     fun getMainPresenter():MainPresenter
@@ -28,7 +25,7 @@ interface ActivityComponent {
 
 }*/
 
-@PerActivity
+@PerActivities
 @Subcomponent(modules = [MainActivityModule::class])
 interface MainActivityComponent {
 

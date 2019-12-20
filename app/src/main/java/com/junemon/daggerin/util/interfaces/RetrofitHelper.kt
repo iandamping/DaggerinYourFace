@@ -4,5 +4,5 @@ import retrofit2.Call
 
 interface RetrofitHelper {
 
-    suspend fun <T> Call<T>.doOneShot():T
+    suspend fun <T> Call<T>.doOneShot(): T
 }

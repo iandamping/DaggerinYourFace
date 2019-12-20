@@ -166,12 +166,12 @@ data class ParentPlatformsItem(
     val platform: PlatformEntity
 )
 
-fun GamesEntity.mapToDatabase():GameDbEntity = GameDbEntity(name,backgroundImage)
+fun GamesEntity.mapToDatabase(): GameDbEntity = GameDbEntity(name, backgroundImage)
 
-fun List<GamesEntity>.mapToDatabase():List<GameDbEntity> = map { it.mapToDatabase() }
+fun List<GamesEntity>.mapToDatabase(): List<GameDbEntity> = map { it.mapToDatabase() }
 
 
-object GameCallback{
+object GameCallback {
     val gamesDiffCallbacks = object : DiffUtil.ItemCallback<GameDbEntity>() {
         override fun areItemsTheSame(oldItem: GameDbEntity, newItem: GameDbEntity): Boolean =
             oldItem.gameName == newItem.gameName

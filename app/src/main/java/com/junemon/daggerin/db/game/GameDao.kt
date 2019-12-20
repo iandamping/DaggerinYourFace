@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 interface GameDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertGame(vararg data:GameDbEntity)
+    suspend fun insertGame(vararg data: GameDbEntity)
 
     @Query("SELECT * FROM table_game")
-    fun loadGame():Flow<List<GameDbEntity>>
+    fun loadGame(): Flow<List<GameDbEntity>>
 }

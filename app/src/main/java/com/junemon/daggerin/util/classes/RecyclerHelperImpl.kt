@@ -7,7 +7,7 @@ import com.junemon.daggerin.base.adapter.BaseKotlinListAdapter
 import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import javax.inject.Inject
 
-class RecyclerHelperImpl @Inject constructor(): RecyclerHelper {
+class RecyclerHelperImpl @Inject constructor() : RecyclerHelper {
     override fun <T> RecyclerView.setUpVerticalListAdapter(
         items: List<T>?,
         diffUtil: DiffUtil.ItemCallback<T>,
@@ -16,7 +16,7 @@ class RecyclerHelperImpl @Inject constructor(): RecyclerHelper {
         itemClick: T.() -> Unit,
         manager: RecyclerView.LayoutManager
     ): BaseKotlinListAdapter<T>? {
-        requireNotNull(items){
+        requireNotNull(items) {
             " your list data is null"
         }
 
@@ -42,7 +42,7 @@ class RecyclerHelperImpl @Inject constructor(): RecyclerHelper {
         manager: RecyclerView.LayoutManager
     ): BaseKotlinListAdapter<T>? {
 
-        requireNotNull(items){
+        requireNotNull(items) {
             " your list data is null"
         }
 
@@ -70,7 +70,7 @@ class RecyclerHelperImpl @Inject constructor(): RecyclerHelper {
             RecyclerHorizontalSnapHelper().attachToRecyclerView(this)
         }
 
-        requireNotNull(items){
+        requireNotNull(items) {
             " your list data is null"
         }
         return BaseKotlinListAdapter(

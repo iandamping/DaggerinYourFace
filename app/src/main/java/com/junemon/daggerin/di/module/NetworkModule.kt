@@ -15,42 +15,42 @@ import java.util.concurrent.TimeUnit
 @Module
 object NetworkModule {
 
-        @Provides
-        @JvmStatic
-        fun provideOkHttpClient(): OkHttpClient {
-            val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-                .connectTimeout(60L, TimeUnit.SECONDS)
-                .writeTimeout(60L, TimeUnit.SECONDS)
-                .readTimeout(60L, TimeUnit.SECONDS)
-                .dispatcher(Dispatcher().apply {
-                    maxRequests = 20
-                    maxRequestsPerHost = 20
-                })
-                .addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                })
-                .addInterceptor { chain ->
-                    chain.run { proceed(this.request().newBuilder().build()) }
-                }
-            return okHttpBuilder.build()
-        }
+    @Provides
+    @JvmStatic
+    fun provideOkHttpClient(): OkHttpClient {
+        val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+            .connectTimeout(60L, TimeUnit.SECONDS)
+            .writeTimeout(60L, TimeUnit.SECONDS)
+            .readTimeout(60L, TimeUnit.SECONDS)
+            .dispatcher(Dispatcher().apply {
+                maxRequests = 20
+                maxRequestsPerHost = 20
+            })
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .addInterceptor { chain ->
+                chain.run { proceed(this.request().newBuilder().build()) }
+            }
+        return okHttpBuilder.build()
+    }
 
-        @Provides
-        @JvmStatic
-        fun provideRetrofit(): Retrofit {
-            return Retrofit.Builder()
-                .client(provideOkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-                .baseUrl(BuildConfig.baseApi)
-                .build()
-        }
+    @Provides
+    @JvmStatic
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .client(provideOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .baseUrl(BuildConfig.baseApi)
+            .build()
+    }
 
 
-        @Provides
-        @JvmStatic
-        fun provideApiInterface(): ApiInterface {
-            return provideRetrofit().create(ApiInterface::class.java)
-        }
+    @Provides
+    @JvmStatic
+    fun provideApiInterface(): ApiInterface {
+        return provideRetrofit().create(ApiInterface::class.java)
+    }
 
 
 }

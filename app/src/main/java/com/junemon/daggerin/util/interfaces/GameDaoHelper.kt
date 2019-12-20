@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface GameDaoHelper {
 
-    suspend fun insertGame(vararg  data:GameDbEntity)
+    suspend fun insertGame(vararg data: GameDbEntity)
 
-    fun loadGame():Flow<List<GameDbEntity>>
+    fun loadGame(): Flow<List<GameDbEntity>>
 }

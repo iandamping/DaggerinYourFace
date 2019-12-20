@@ -10,10 +10,11 @@ import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-class RetrofitHelperImpl  @Inject constructor(): RetrofitHelper {
+class RetrofitHelperImpl @Inject constructor() : RetrofitHelper {
 
     @ExperimentalCoroutinesApi
-    override suspend fun <T> Call<T>.doOneShot(): T = suspendCancellableCoroutine { cancellableContinuation ->
+    override suspend fun <T> Call<T>.doOneShot(): T =
+        suspendCancellableCoroutine { cancellableContinuation ->
 
             this.enqueue(object : Callback<T> {
                 override fun onFailure(call: Call<T>, t: Throwable) {
