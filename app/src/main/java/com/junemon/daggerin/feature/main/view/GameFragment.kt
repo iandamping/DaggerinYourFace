@@ -1,15 +1,20 @@
 package com.junemon.daggerin.feature.main.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
 import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
+import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.game.GameCallback
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
@@ -17,11 +22,11 @@ import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_games.view.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
-    MainView {
+class GameFragment : Fragment(),
+    GameView {
 
     @Inject
-    lateinit var presenter: MainPresenter
+    lateinit var presenter: GamePresenter
 
     @Inject
     lateinit var recyclerHelper: RecyclerHelper
@@ -29,22 +34,26 @@ class MainActivity : AppCompatActivity(),
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getMainActivityComponent().inject(this).injectActivity(this)
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Grabs the rootActivityComponent from the Activity and injects this Fragment
+        (activity as RootActivity).rootActivityComponent
+            .getGamesComponent().inject(this).inject(this)
     }
 
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_main,container,false)
         presenter.apply {
-            attachLifecycle(this@MainActivity)
+            attachLifecycle(this@GameFragment)
             getData()
         }
+        return binding.root
     }
 
 
@@ -63,7 +72,7 @@ class MainActivity : AppCompatActivity(),
                         }, itemClick = {
                             val intent by lazy {
                                 Intent(
-                                    this@MainActivity,
+                                    this@GameFragment.context,
                                     GameDetailActivity::class.java
                                 )
                             }

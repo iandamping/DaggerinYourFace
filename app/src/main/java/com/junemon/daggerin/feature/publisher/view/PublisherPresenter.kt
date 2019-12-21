@@ -1,5 +1,6 @@
 package com.junemon.daggerin.feature.publisher.view
 
+import com.junemon.daggerin.base.BaseFragmentPresenter
 import com.junemon.daggerin.base.BasePresenter
 import com.junemon.daggerin.model.publisher.PublishersEntity
 import com.junemon.daggerin.model.publisher.mapToDatabase
@@ -15,7 +16,7 @@ class PublisherPresenter @Inject constructor(
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper,
     private val publisherDaoHelper: PublisherDaoHelper
-) : BasePresenter<PublisherView>(publisherView) {
+) : BaseFragmentPresenter<PublisherView>(publisherView) {
 
     fun getData() {
         setDialogShow(false)

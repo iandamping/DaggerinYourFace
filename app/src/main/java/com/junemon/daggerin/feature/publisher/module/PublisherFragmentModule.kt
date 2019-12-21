@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class PublisherActivityModule() {
+class PublisherFragmentModule() {
 
     @Provides
     fun providePublisherPresenter(

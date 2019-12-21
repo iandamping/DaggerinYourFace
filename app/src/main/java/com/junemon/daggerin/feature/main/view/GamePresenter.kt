@@ -1,5 +1,6 @@
 package com.junemon.daggerin.feature.main.view
 
+import com.junemon.daggerin.base.BaseFragmentPresenter
 import com.junemon.daggerin.base.BasePresenter
 import com.junemon.daggerin.model.game.GamesEntity
 import com.junemon.daggerin.model.game.mapToDatabase
@@ -10,13 +11,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(
-    view: MainView,
+class GamePresenter @Inject constructor(
+    view: GameView,
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper,
     private val gameDao: GameDaoHelper
 ) :
-    BasePresenter<MainView>(view) {
+    BaseFragmentPresenter<GameView>(view) {
 
     fun getData() {
         setDialogShow(false)
