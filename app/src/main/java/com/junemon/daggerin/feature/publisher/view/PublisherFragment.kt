@@ -1,19 +1,23 @@
 package com.junemon.daggerin.feature.publisher.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.base.BaseActivity
+import com.junemon.daggerin.base.BaseFragment
 import com.junemon.daggerin.base.ResultToConsume
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.db.publisher.PublisherDbEntity
 import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
+import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.publisher.PublisherCallback
 import com.junemon.daggerin.util.Constant
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
@@ -21,7 +25,7 @@ import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.item_publisher.view.*
 
-class PublisherActivity : BaseActivity() {
+class PublisherFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,26 +38,31 @@ class PublisherActivity : BaseActivity() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getPublisherActivityComponent().create().inject(this)
-    }
-
     private lateinit var binding: ActivityPublisherBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_publisher)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Grabs the rootActivityComponent from the Activity and injects this Fragment
+        (activity as RootActivity).rootActivityComponent
+            .getPublisherComponent().create().inject(this)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_publisher, container, false)
         binding.apply {
-            lifecycleOwner = this@PublisherActivity
+            lifecycleOwner = viewLifecycleOwner
             observeData()
         }
+        return binding.root
     }
 
     fun ActivityPublisherBinding.observeData() {
         apply {
-            viewModel.getData().observe(this@PublisherActivity, Observer { result ->
+            viewModel.getData().observe(viewLifecycleOwner, Observer { result ->
                 when (result) {
                     is ResultToConsume.Success -> {
                         setDialogShow(true)
@@ -88,7 +97,7 @@ class PublisherActivity : BaseActivity() {
                 }, itemClick = {
                     val intent by lazy {
                         Intent(
-                            this@PublisherActivity,
+                            this@PublisherFragment.context,
                             GameDetailActivity::class.java
                         )
                     }

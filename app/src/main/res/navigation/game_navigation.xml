@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/game_navigation"
+    app:startDestination="@id/gameFragment">
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.junemon.daggerin.feature.game.view.GameFragment"
+        android:label="GameFragment" />
+    <fragment
+        android:id="@+id/publisherFragment"
+        android:name="com.junemon.daggerin.feature.publisher.view.PublisherFragment"
+        android:label="PublisherFragment" />
+</navigation>

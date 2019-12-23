@@ -1,19 +1,23 @@
 package com.junemon.daggerin.feature.game.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.base.BaseActivity
+import com.junemon.daggerin.base.BaseFragment
 import com.junemon.daggerin.base.ResultToConsume
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
 import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
+import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.game.GameCallback
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
@@ -21,7 +25,7 @@ import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.item_games.view.*
 
-class GameActivity : BaseActivity() {
+class GameFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,26 +38,31 @@ class GameActivity : BaseActivity() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getGameActivityComponent().create().injectActivity(this)
-    }
-
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false)
         binding.apply {
-            lifecycleOwner = this@GameActivity
+            lifecycleOwner = viewLifecycleOwner
             observeData()
         }
+        return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Grabs the rootActivityComponent from the Activity and injects this Fragment
+        (activity as RootActivity).rootActivityComponent
+            .getGamesComponent().create().inject(this)
     }
 
     fun ActivityMainBinding.observeData() {
         apply {
-            gameViewModel.getData().observe(this@GameActivity, Observer { result ->
+            gameViewModel.getData().observe(viewLifecycleOwner, Observer { result ->
                 when (result) {
                     is ResultToConsume.Success -> {
                         setDialogShow(true)
@@ -88,7 +97,7 @@ class GameActivity : BaseActivity() {
                 }, itemClick = {
                     val intent by lazy {
                         Intent(
-                            this@GameActivity,
+                            this@GameFragment.context,
                             GameDetailActivity::class.java
                         )
                     }
