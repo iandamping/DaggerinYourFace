@@ -29,9 +29,6 @@ interface AppsComponent {
 
     fun getRootActivityComponent(): RootActivityComponent.Factory
 
-    /*//Ini adalah cara sub-component dari coding in flow
-    fun getPublisherActivityComponent(publisherActivityModule: PublisherActivityModule): PublisherActivityComponent*/
-
     @Component.Factory
     interface Factory {
         fun injectApplication(@BindsInstance application: Application): AppsComponent

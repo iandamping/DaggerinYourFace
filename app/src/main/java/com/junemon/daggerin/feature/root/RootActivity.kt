@@ -20,7 +20,7 @@ class RootActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         rootActivityComponent = (application as MainApplication).appComponent
             .getRootActivityComponent().create()
-        // Injects this activity to the just created Registration component
+        // Injects this activity to the just created All Fragment component
         rootActivityComponent.inject(this)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_root)
