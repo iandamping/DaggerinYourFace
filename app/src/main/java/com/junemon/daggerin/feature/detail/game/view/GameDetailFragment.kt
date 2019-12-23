@@ -1,21 +1,25 @@
 package com.junemon.daggerin.feature.detail.game.view
 
+import android.content.Context
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.base.BaseActivity
+import com.junemon.daggerin.base.BaseFragment
 import com.junemon.daggerin.base.ResultRemoteToConsume
 import com.junemon.daggerin.databinding.ActivityDetailGameBinding
+import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import javax.inject.Inject
 
-class GameDetailActivity : BaseActivity() {
+class GameDetailFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -27,26 +31,31 @@ class GameDetailActivity : BaseActivity() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getGamesDetailActivityComponent().create().inject(this)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Grabs the rootActivityComponent from the Activity and injects this Fragment
+        (activity as RootActivity).rootActivityComponent
+            .getGamesDetailComponent().create().inject(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
-        super.onCreate(savedInstanceState)
-        val detailID by lazy { intent.getIntExtra(intentGamesDetailKey, 0) }
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_game)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val detailID by lazy { GameDetailFragmentArgs.fromBundle(arguments!!).gameID }
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_detail_game, container, false)
         binding.apply {
-            lifecycleOwner = this@GameDetailActivity
+            lifecycleOwner = viewLifecycleOwner
             observeData(detailID)
         }
+        return binding.root
     }
+
 
     fun ActivityDetailGameBinding.observeData(detailID: Int) {
         apply {
-            viewModel.getData(detailID).observe(this@GameDetailActivity, Observer { result ->
+            viewModel.getData(detailID).observe(viewLifecycleOwner, Observer { result ->
                 when (result.status) {
                     ResultRemoteToConsume.Status.ERROR -> {
                         setDialogShow(true)

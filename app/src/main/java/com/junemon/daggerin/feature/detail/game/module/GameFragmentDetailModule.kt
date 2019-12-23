@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class GameDetailActivityModule {
+abstract class GameFragmentDetailModule {
     @Binds
     @IntoMap
     @ViewModelKey(GameDetailViewModel::class)

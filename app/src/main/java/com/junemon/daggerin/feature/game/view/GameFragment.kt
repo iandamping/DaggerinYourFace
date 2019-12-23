@@ -10,13 +10,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.R
 import com.junemon.daggerin.base.BaseFragment
 import com.junemon.daggerin.base.ResultToConsume
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
-import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
+import com.junemon.daggerin.feature.detail.game.view.GameDetailFragment
 import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.game.GameCallback
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
@@ -95,14 +96,15 @@ class GameFragment : BaseFragment() {
                         ivImages.loadWithGlide(it.gameImage)
                     }
                 }, itemClick = {
-                    val intent by lazy {
+                    this@consumeData.root.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameDetailFragment(gameId))
+                   /* val intent by lazy {
                         Intent(
                             this@GameFragment.context,
-                            GameDetailActivity::class.java
+                            GameDetailFragment::class.java
                         )
                     }
                     intent.putExtra(intentGamesDetailKey, gameId)
-                    startActivity(intent)
+                    startActivity(intent)*/
                 })
         }
     }

@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class PublisherDetailActivityModule {
+abstract class PublisherDetailFragmentModule {
     @Binds
     @IntoMap
     @ViewModelKey(PublisherDetailViewModel::class)
