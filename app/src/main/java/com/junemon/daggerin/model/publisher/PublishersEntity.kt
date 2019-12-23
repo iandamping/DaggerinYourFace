@@ -26,7 +26,8 @@ data class PublishersEntity(
     val imageBackground: String = ""
 )
 
-fun PublishersEntity.mapToDatabase(): PublisherDbEntity = PublisherDbEntity(id,name, imageBackground)
+fun PublishersEntity.mapToDatabase(): PublisherDbEntity =
+    PublisherDbEntity(id, name, imageBackground)
 
 fun List<PublishersEntity>.mapToDatabase(): List<PublisherDbEntity> = map { it.mapToDatabase() }
 

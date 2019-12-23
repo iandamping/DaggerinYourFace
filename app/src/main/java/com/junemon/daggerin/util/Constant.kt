@@ -12,7 +12,7 @@ internal fun ViewGroup.inflates(layout: Int): View {
     return LayoutInflater.from(context).inflate(layout, this, false)
 }
 
-object Constant{
-    const val intentGamesDetailKey:String = "intent games detail"
-    const val intentPublisherDetailKey:String = "intent gamepublishers detail"
+object Constant {
+    const val intentGamesDetailKey: String = "intent games detail"
+    const val intentPublisherDetailKey: String = "intent gamepublishers detail"
 }

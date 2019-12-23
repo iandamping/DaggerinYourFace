@@ -31,5 +31,4 @@ object DatabaseModule {
     fun providePublisherDao(db: GameDatabase): PublisherDao {
         return db.publisherDao()
     }
-
 }

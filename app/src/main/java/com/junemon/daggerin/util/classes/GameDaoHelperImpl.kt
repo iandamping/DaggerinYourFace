@@ -3,8 +3,8 @@ package com.junemon.daggerin.util.classes
 import com.junemon.daggerin.db.game.GameDao
 import com.junemon.daggerin.db.game.GameDbEntity
 import com.junemon.daggerin.util.interfaces.GameDaoHelper
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class GameDaoHelperImpl @Inject constructor(private val gameDao: GameDao) : GameDaoHelper {
 

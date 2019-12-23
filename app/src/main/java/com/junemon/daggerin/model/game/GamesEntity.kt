@@ -166,10 +166,9 @@ data class ParentPlatformsItem(
     val platform: PlatformEntity
 )
 
-fun GamesEntity.mapToDatabase(): GameDbEntity = GameDbEntity(id,name, backgroundImage)
+fun GamesEntity.mapToDatabase(): GameDbEntity = GameDbEntity(id, name, backgroundImage)
 
 fun List<GamesEntity>.mapToDatabase(): List<GameDbEntity> = map { it.mapToDatabase() }
-
 
 object GameCallback {
     val gamesDiffCallbacks = object : DiffUtil.ItemCallback<GameDbEntity>() {

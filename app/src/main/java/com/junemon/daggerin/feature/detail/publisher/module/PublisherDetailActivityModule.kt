@@ -1,21 +1,16 @@
 package com.junemon.daggerin.feature.detail.publisher.module
 
-import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailPresenter
-import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailView
-import com.junemon.daggerin.network.ApiInterface
-import com.junemon.daggerin.util.interfaces.RetrofitHelper
+import androidx.lifecycle.ViewModel
+import com.android.example.github.di.ViewModelKey
+import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
-class PublisherDetailActivityModule {
-
-    @Provides
-    fun providePublisherDetailPresenter(view: PublisherDetailView, apiInterface: ApiInterface, retrofitHelper: RetrofitHelper): PublisherDetailPresenter {
-        return PublisherDetailPresenter(
-            view = view,
-            api = apiInterface,
-            retrofitHelper = retrofitHelper
-        )
-    }
+abstract class PublisherDetailActivityModule {
+    @Binds
+    @IntoMap
+    @ViewModelKey(PublisherDetailViewModel::class)
+    abstract fun bindPublisherViewModel(publisherDetailViewModel: PublisherDetailViewModel): ViewModel
 }

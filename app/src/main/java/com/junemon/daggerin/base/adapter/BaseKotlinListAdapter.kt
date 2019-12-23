@@ -9,7 +9,9 @@ Created by Ian Damping on 30/07/2019.
 Github = https://github.com/iandamping
  */
 class BaseKotlinListAdapter<T>(
-    layout: Int, private val bindHolder: View.(T) -> Unit, diffUtil: DiffUtil.ItemCallback<T>,
+    layout: Int,
+    private val bindHolder: View.(T) -> Unit,
+    diffUtil: DiffUtil.ItemCallback<T>,
     private val itemClicks: T.() -> Unit
 ) : BaseListAdapter<T>(layout, diffUtil, itemClicks) {
 

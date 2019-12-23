@@ -11,7 +11,6 @@ open class MainApplication : Application() {
         initializeComponent()
     }
 
-
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {

@@ -1,21 +1,16 @@
 package com.junemon.daggerin.feature.detail.game.view.module
 
-import com.junemon.daggerin.feature.detail.game.view.GameDetailPresenter
-import com.junemon.daggerin.feature.detail.game.view.GameDetailView
-import com.junemon.daggerin.network.ApiInterface
-import com.junemon.daggerin.util.interfaces.RetrofitHelper
+import androidx.lifecycle.ViewModel
+import com.android.example.github.di.ViewModelKey
+import com.junemon.daggerin.feature.detail.game.view.GameDetailViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
-class GameDetailActivityModule {
-
-    @Provides
-    fun provideGameDetailPresenter(view: GameDetailView, apiInterface: ApiInterface, retrofitHelper: RetrofitHelper): GameDetailPresenter {
-        return GameDetailPresenter(
-            view = view,
-            api = apiInterface,
-            retrofitHelper = retrofitHelper
-        )
-    }
+abstract class GameDetailActivityModule {
+    @Binds
+    @IntoMap
+    @ViewModelKey(GameDetailViewModel::class)
+    abstract fun bindUserViewModel(gameDetailViewModel: GameDetailViewModel): ViewModel
 }

@@ -1,8 +1,8 @@
 package com.junemon.daggerin.db.publisher
 
 import com.junemon.daggerin.db.GameDatabase
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class PublisherDaoInjector @Inject constructor(private val database: GameDatabase) : PublisherDao {
     override suspend fun insertPublisher(vararg data: PublisherDbEntity) {

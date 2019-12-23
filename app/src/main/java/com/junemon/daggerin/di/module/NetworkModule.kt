@@ -5,12 +5,12 @@ import com.junemon.daggerin.BuildConfig
 import com.junemon.daggerin.network.ApiInterface
 import dagger.Module
 import dagger.Provides
+import java.util.concurrent.TimeUnit
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 @Module
 object NetworkModule {
@@ -45,14 +45,11 @@ object NetworkModule {
             .build()
     }
 
-
     @Provides
     @JvmStatic
     fun provideApiInterface(): ApiInterface {
         return provideRetrofit().create(ApiInterface::class.java)
     }
-
-
 }
 
 /*
