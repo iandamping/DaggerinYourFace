@@ -14,6 +14,7 @@ buildscript {
         retrofitVer = '2.6.2'
         rxjava2Ver ='2.1.1'
         okHttp3Ver = '4.0.1'
+        navigationVer = '2.2.0-rc04'
         okHttp3LogginInterceptorVer = '4.0.1'
         shimmerVer = '0.5.0'
     }
@@ -23,6 +24,7 @@ buildscript {
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVer"
         classpath 'com.android.tools.build:gradle:4.0.0-alpha04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
