@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class PublisherDetailActivityModule {
+class PublisherDetailFragmentModule {
 
     @Provides
     fun providePublisherDetailPresenter(view: PublisherDetailView, apiInterface: ApiInterface, retrofitHelper: RetrofitHelper): PublisherDetailPresenter {

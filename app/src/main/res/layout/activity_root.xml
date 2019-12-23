@@ -22,7 +22,7 @@
                 android:id="@+id/bottomNav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:itemBackground="@android:color/white"
+                android:background="@android:color/white"
                 app:menu="@menu/main_nav_menu" />
 
 

@@ -1,5 +1,6 @@
 package com.junemon.daggerin.feature.detail.publisher.view
 
+import com.junemon.daggerin.base.BaseFragmentPresenter
 import com.junemon.daggerin.base.BasePresenter
 import com.junemon.daggerin.feature.detail.game.view.GameDetailView
 import com.junemon.daggerin.network.ApiInterface
@@ -11,7 +12,7 @@ class PublisherDetailPresenter @Inject constructor(
     view: PublisherDetailView,
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper
-):BasePresenter<PublisherDetailView>(view) {
+):BaseFragmentPresenter<PublisherDetailView>(view) {
 
     fun getData(id:Int){
         customScope.launch {

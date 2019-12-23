@@ -1,22 +1,19 @@
 package com.junemon.daggerin.feature.publisher.view
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.db.publisher.PublisherDbEntity
-import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailActivity
 import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.publisher.PublisherCallback
-import com.junemon.daggerin.util.Constant.intentPublisherDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_publisher.view.*
@@ -37,7 +34,8 @@ class PublisherFragment : Fragment(),
         super.onAttach(context)
 
         // Grabs the rootActivityComponent from the Activity and injects this Fragment
-        (activity as RootActivity).rootActivityComponent.getPublisherComponent().inject(this).inject(this)
+        (activity as RootActivity).rootActivityComponent.getPublisherComponent().inject(this)
+            .inject(this)
     }
 
     private lateinit var binding: ActivityPublisherBinding
@@ -47,7 +45,7 @@ class PublisherFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_publisher,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_publisher, container, false)
         presenter.apply {
             attachLifecycle(this@PublisherFragment)
             getData()
@@ -68,14 +66,11 @@ class PublisherFragment : Fragment(),
                                 ivImages.loadWithGlide(it.publisherImage)
                             }
                         }, itemClick = {
-                            val intent by lazy {
-                                Intent(
-                                    this@PublisherFragment.context,
-                                    PublisherDetailActivity::class.java
+                            this@apply.root.findNavController().navigate(
+                                PublisherFragmentDirections.actionPublisherFragmentToPublisherDetailFragment(
+                                    publisherId
                                 )
-                            }
-                            intent.putExtra(intentPublisherDetailKey,publisherId)
-                            startActivity(intent)
+                            )
                         })
                 }
             }

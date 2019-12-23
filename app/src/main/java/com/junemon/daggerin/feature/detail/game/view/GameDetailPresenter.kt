@@ -1,5 +1,6 @@
 package com.junemon.daggerin.feature.detail.game.view
 
+import com.junemon.daggerin.base.BaseFragmentPresenter
 import com.junemon.daggerin.base.BasePresenter
 import com.junemon.daggerin.network.ApiInterface
 import com.junemon.daggerin.util.interfaces.RetrofitHelper
@@ -10,7 +11,7 @@ class GameDetailPresenter @Inject constructor(
     view: GameDetailView,
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper
-) : BasePresenter<GameDetailView>(view) {
+) : BaseFragmentPresenter<GameDetailView>(view) {
 
     fun getData(id:Int){
         customScope.launch {

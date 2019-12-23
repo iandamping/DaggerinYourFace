@@ -6,9 +6,33 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.junemon.daggerin.feature.main.view.GameFragment"
-        android:label="GameFragment" />
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/publisherFragment"
         android:name="com.junemon.daggerin.feature.publisher.view.PublisherFragment"
-        android:label="PublisherFragment" />
+        android:label="PublisherFragment" >
+        <action
+            android:id="@+id/action_publisherFragment_to_publisherDetailFragment"
+            app:destination="@id/publisherDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="com.junemon.daggerin.feature.detail.game.view.GameDetailFragment"
+        android:label="GameDetailFragment" >
+        <argument
+            android:name="gameID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/publisherDetailFragment"
+        android:name="com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailFragment"
+        android:label="PublisherDetailFragment" >
+        <argument
+            android:name="publisherID"
+            app:argType="integer" />
+    </fragment>
 </navigation>

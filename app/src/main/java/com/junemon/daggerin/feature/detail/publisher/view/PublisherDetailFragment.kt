@@ -1,19 +1,24 @@
 package com.junemon.daggerin.feature.detail.publisher.view
 
+import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityDetailPublisherBinding
+import com.junemon.daggerin.feature.root.RootActivity
 import com.junemon.daggerin.model.publisher.PublisherDetailEntity
 import com.junemon.daggerin.util.Constant
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import javax.inject.Inject
 
-class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
-    private val detailID by lazy { intent.getIntExtra(Constant.intentPublisherDetailKey,0) }
+class PublisherDetailFragment:Fragment(),PublisherDetailView {
+    private val detailID by lazy { PublisherDetailFragmentArgs.fromBundle(arguments!!).publisherID }
 
     @Inject
     lateinit var presenter: PublisherDetailPresenter
@@ -23,22 +28,29 @@ class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
 
     private lateinit var binding: ActivityDetailPublisherBinding
 
-    private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getPublisherDetailActivityComponent().inject(this).injectActivity(this)
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Grabs the rootActivityComponent from the Activity and injects this Fragment
+        (activity as RootActivity).rootActivityComponent
+            .getPublisherDetailComponent().inject(this).injectFragment(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_publisher)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater,R.layout.activity_detail_publisher,container,false)
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
         presenter.apply {
-            attachLifecycle(this@PublisherDetailActivity)
+            attachLifecycle(this@PublisherDetailFragment)
             getData(detailID)
         }
-
+        return binding.root
     }
+
     override fun observeData(data: PublisherDetailEntity) {
         if (::binding.isInitialized){
             binding.apply {

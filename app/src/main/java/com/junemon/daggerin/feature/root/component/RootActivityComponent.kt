@@ -3,6 +3,7 @@ package com.junemon.daggerin.feature.root.component
 import com.junemon.daggerin.di.component.FragmentSubComponent
 import com.junemon.daggerin.di.scope.PerActivities
 import com.junemon.daggerin.feature.detail.game.view.component.GameDetailActivityComponent
+import com.junemon.daggerin.feature.detail.publisher.component.PublisherDetailFragmentComponent
 import com.junemon.daggerin.feature.main.component.MainFragmentComponent
 import com.junemon.daggerin.feature.main.module.GameFragmentModule
 import com.junemon.daggerin.feature.main.view.GameFragment
@@ -23,6 +24,10 @@ interface RootActivityComponent {
     fun getGamesComponent(): MainFragmentComponent.Factory
 
     fun getPublisherComponent(): PublisherFragmentComponent.Factory
+
+    fun getPublisherDetailComponent():PublisherDetailFragmentComponent.Factory
+
+    fun getGameDetailComponent():GameDetailActivityComponent.Factory
 
     @Subcomponent.Factory
     interface Factory {
