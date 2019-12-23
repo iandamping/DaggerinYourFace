@@ -1,9 +1,9 @@
 package com.junemon.daggerin.network
 
-import com.junemon.daggerin.model.game.GamesDetailEntity
-import com.junemon.daggerin.model.game.GamesEntity
-import com.junemon.daggerin.model.publisher.PublisherDetailEntity
-import com.junemon.daggerin.model.publisher.PublishersEntity
+import com.junemon.daggerin.data.datasource.model.GamesDetailEntity
+import com.junemon.daggerin.data.datasource.model.GamesEntity
+import com.junemon.daggerin.data.datasource.model.PublisherDetailEntity
+import com.junemon.daggerin.data.datasource.model.PublishersEntity
 import com.junemon.daggerin.network.ApiConstant.games
 import com.junemon.daggerin.network.ApiConstant.publisher
 import com.junemon.gamesapi.data.datasource.model.ResultEntity

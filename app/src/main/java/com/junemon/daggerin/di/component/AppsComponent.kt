@@ -3,9 +3,7 @@ package com.junemon.daggerin.di.component
 import android.app.Application
 import com.junemon.daggerin.di.module.*
 import com.junemon.daggerin.di.scope.ApplicationScope
-import com.junemon.daggerin.feature.detail.game.view.component.GameDetailFragmentComponent
-import com.junemon.daggerin.feature.detail.publisher.component.PublisherDetailFragmentComponent
-import com.junemon.daggerin.feature.root.component.RootActivityComponent
+import com.junemon.daggerin.presentation.feature.root.component.RootActivityComponent
 import dagger.BindsInstance
 import dagger.Component
 
@@ -19,6 +17,8 @@ import dagger.Component
         DatabaseHelperModule::class,
         RecyclerHelperModule::class,
         ViewModelModule::class,
+        RepositoryDataModule::class,
+        RepositoryPresentationModule::class,
         AppSubComponent::class]
 )
 interface AppsComponent {

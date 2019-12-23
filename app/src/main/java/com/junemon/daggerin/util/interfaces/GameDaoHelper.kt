@@ -1,6 +1,6 @@
 package com.junemon.daggerin.util.interfaces
 
-import com.junemon.daggerin.db.game.GameDbEntity
+import com.junemon.daggerin.data.db.game.GameDbEntity
 import kotlinx.coroutines.flow.Flow
 
 interface GameDaoHelper {

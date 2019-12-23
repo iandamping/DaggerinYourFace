@@ -2,9 +2,9 @@ package com.junemon.daggerin.di.module
 
 import android.app.Application
 import androidx.room.Room
-import com.junemon.daggerin.db.GameDatabase
-import com.junemon.daggerin.db.game.GameDao
-import com.junemon.daggerin.db.publisher.PublisherDao
+import com.junemon.daggerin.data.db.GameDatabase
+import com.junemon.daggerin.data.db.game.GameDao
+import com.junemon.daggerin.data.db.publisher.PublisherDao
 import dagger.Module
 import dagger.Provides
 

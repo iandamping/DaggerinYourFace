@@ -1,7 +1,7 @@
 package com.junemon.daggerin.util.classes
 
-import com.junemon.daggerin.db.publisher.PublisherDao
-import com.junemon.daggerin.db.publisher.PublisherDbEntity
+import com.junemon.daggerin.data.db.publisher.PublisherDao
+import com.junemon.daggerin.data.db.publisher.PublisherDbEntity
 import com.junemon.daggerin.util.interfaces.PublisherDaoHelper
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow

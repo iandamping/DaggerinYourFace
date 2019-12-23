@@ -1,7 +1,7 @@
 package com.junemon.daggerin.util.classes
 
-import com.junemon.daggerin.db.game.GameDao
-import com.junemon.daggerin.db.game.GameDbEntity
+import com.junemon.daggerin.data.db.game.GameDao
+import com.junemon.daggerin.data.db.game.GameDbEntity
 import com.junemon.daggerin.util.interfaces.GameDaoHelper
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
