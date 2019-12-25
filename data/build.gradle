@@ -46,7 +46,7 @@ dependencies {
 
     //retrofit
     api "com.squareup.retrofit2:retrofit:$retrofitVer"
-    api "com.squareup.retrofit2:converter-gson:$retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVer"
     //okhttp
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3LogginInterceptorVer"
     implementation "com.squareup.okhttp3:okhttp:$okHttp3Ver"
@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$livedata_version"
     //room
-    api "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
     api "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //coroutine
