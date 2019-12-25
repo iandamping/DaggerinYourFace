@@ -1,9 +1,13 @@
 package com.junemon.daggerin.di.component
 
 import android.app.Application
+import com.junemon.daggerin.data.di.*
 import com.junemon.daggerin.di.module.*
 import com.junemon.daggerin.di.scope.ApplicationScope
-import com.junemon.daggerin.presentation.feature.root.component.RootActivityComponent
+import com.junemon.daggerin.presentation.di.module.LoadImageHelperModule
+import com.junemon.daggerin.presentation.di.module.RecyclerHelperModule
+import com.junemon.daggerin.presentation.di.module.RepositoryPresentationModule
+import com.junemon.daggerin.view.root.component.RootActivityComponent
 import dagger.BindsInstance
 import dagger.Component
 

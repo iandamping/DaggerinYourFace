@@ -1,2 +1,5 @@
 rootProject.name='Daggerin2019'
 include ':app'
+include ':data'
+include ':domain'
+include ':presentation'
