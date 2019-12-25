@@ -1,4 +1,4 @@
-package com.junemon.daggerin.data.di
+package com.junemon.daggerin.data.di.module
 
 import com.junemon.daggerin.data.util.classes.GameDaoHelperImpl
 import com.junemon.daggerin.data.util.classes.PublisherDaoHelperImpl

@@ -1,4 +1,4 @@
-package com.junemon.daggerin.data.di
+package com.junemon.daggerin.data.di.module
 
 import com.junemon.daggerin.data.util.classes.RetrofitHelperImpl
 import com.junemon.daggerin.data.util.interfaces.RetrofitHelper

@@ -1,4 +1,4 @@
-package com.junemon.daggerin.presentation.di.module
+package com.junemon.daggerin.domain.di
 
 import com.junemon.daggerin.domain.repository.GameRepository
 import com.junemon.daggerin.domain.repository.PublisherRepository
@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-object RepositoryPresentationModule {
+object RepositoryDomainModule {
 
     @Provides
     @JvmStatic

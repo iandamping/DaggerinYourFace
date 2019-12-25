@@ -1,4 +1,4 @@
-package com.junemon.daggerin.data.di
+package com.junemon.daggerin.data.di.module
 
 import android.app.Application
 import androidx.room.Room

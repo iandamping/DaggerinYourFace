@@ -1,4 +1,4 @@
-package com.junemon.daggerin.data.di
+package com.junemon.daggerin.data.di.module
 
 import com.google.gson.GsonBuilder
 import com.junemon.daggerin.data.network.ApiInterface
