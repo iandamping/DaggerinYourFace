@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.junemon.daggerin.feature.game.view.GameFragment"
+        android:name="com.junemon.daggerinyourface.view.game.GameFragment"
         android:label="GameFragment" >
         <action
             android:id="@+id/action_gameFragment_to_gameDetailFragment"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/publisherFragment"
-        android:name="com.junemon.daggerin.feature.publisher.view.PublisherFragment"
+        android:name="com.junemon.daggerinyourface.view.publisher.PublisherFragment"
         android:label="PublisherFragment" >
         <action
             android:id="@+id/action_publisherFragment_to_publisherDetailFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
-        android:name="com.junemon.daggerin.feature.detail.game.view.GameDetailFragment"
+        android:name="com.junemon.daggerinyourface.view.game.detail.GameDetailFragment"
         android:label="GameDetailFragment" >
         <argument
             android:name="gameID"
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/publisherDetailFragment"
-        android:name="com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailFragment"
+        android:name="com.junemon.daggerinyourface.view.publisher.detail.PublisherDetailFragment"
         android:label="PublisherDetailFragment" >
         <argument
             android:name="publisherID"
