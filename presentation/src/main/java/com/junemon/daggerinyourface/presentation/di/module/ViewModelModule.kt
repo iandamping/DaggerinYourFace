@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.di.module
+package com.junemon.daggerinyourface.presentation.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.android.example.github.viewmodel.ViewModelFactory
