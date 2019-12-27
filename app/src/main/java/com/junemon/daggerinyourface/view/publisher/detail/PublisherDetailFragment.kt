@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
 import com.junemon.daggerinyourface.databinding.FragmentDetailGameBinding
+import com.junemon.daggerinyourface.databinding.FragmentDetailPublisherBinding
 import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
@@ -29,7 +30,7 @@ class PublisherDetailFragment : BaseFragment() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private lateinit var binding: FragmentDetailGameBinding
+    private lateinit var binding: FragmentDetailPublisherBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,7 +54,7 @@ class PublisherDetailFragment : BaseFragment() {
         return binding.root
     }
 
-    fun FragmentDetailGameBinding.observeData(detailID: Int) {
+    fun FragmentDetailPublisherBinding.observeData(detailID: Int) {
         apply {
             viewModel.getDetailRemote(detailID).observe(viewLifecycleOwner, Observer { result ->
                 when (result.status) {
@@ -77,7 +78,7 @@ class PublisherDetailFragment : BaseFragment() {
         }
     }
 
-    private fun FragmentDetailGameBinding.consumeData(result: com.junemon.daggerinyourface.presentation.model.PublisherDetailPresentation?) {
+    private fun FragmentDetailPublisherBinding.consumeData(result: com.junemon.daggerinyourface.presentation.model.PublisherDetailPresentation?) {
         tvDesc.text = result?.description
         tvName.text = result?.publisherName
         loadImageHelper.run {
