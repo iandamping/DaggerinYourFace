@@ -10,6 +10,10 @@
         <action
             android:id="@+id/action_gameFragment_to_gameDetailFragment"
             app:destination="@id/gameDetailFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_gamePagingFragment"
+            app:destination="@id/gamePagingFragment"
+            app:popUpTo="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/publisherFragment"
@@ -18,6 +22,10 @@
         <action
             android:id="@+id/action_publisherFragment_to_publisherDetailFragment"
             app:destination="@id/publisherDetailFragment" />
+        <action
+            android:id="@+id/action_publisherFragment_to_publisherPagingFragment"
+            app:destination="@id/publisherPagingFragment"
+            app:popUpTo="@id/publisherFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
@@ -34,5 +42,23 @@
         <argument
             android:name="publisherID"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamePagingFragment"
+        android:name="com.junemon.daggerinyourface.view.game.paging.GamePagingFragment"
+        android:label="GamePagingFragment" >
+        <action
+            android:id="@+id/action_gamePagingFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment"
+            app:popUpTo="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/publisherPagingFragment"
+        android:name="com.junemon.daggerinyourface.view.publisher.paging.PublisherPagingFragment"
+        android:label="PublisherPagingFragment" >
+        <action
+            android:id="@+id/action_publisherPagingFragment_to_publisherDetailFragment"
+            app:destination="@id/publisherDetailFragment"
+            app:popUpTo="@id/publisherFragment" />
     </fragment>
 </navigation>

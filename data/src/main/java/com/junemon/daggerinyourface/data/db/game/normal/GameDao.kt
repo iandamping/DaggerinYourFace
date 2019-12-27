@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.game
+package com.junemon.daggerinyourface.data.db.game.normal
 
 import androidx.room.Dao
 import androidx.room.Insert

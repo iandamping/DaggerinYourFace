@@ -1,11 +1,13 @@
 package com.junemon.daggerinyourface.presentation.util.interfaces
 
 import android.view.View
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.junemon.daggerinyourface.presentation.base.adapter.BaseKotlinListAdapter
+import com.junemon.daggerinyourface.presentation.base.adapter.BaseKotlinPagingListAdapter
 
 interface RecyclerHelper {
 
@@ -39,4 +41,13 @@ interface RecyclerHelper {
             false
         )
     ): BaseKotlinListAdapter<T>?
+
+    fun <T> RecyclerView.setUpPagingVertical(
+        items: PagedList<T>?,
+        layoutResId: Int,
+        bindHolder: View.(T) -> Unit,
+        diffUtil: DiffUtil.ItemCallback<T>,
+        itemClick: T.() -> Unit = {},
+        manager: RecyclerView.LayoutManager = LinearLayoutManager(this.context)
+    ): BaseKotlinPagingListAdapter<T>?
 }

@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.publisher
+package com.junemon.daggerinyourface.data.db.publisher.normal
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -19,6 +19,10 @@ fun PublisherDbEntity.mapToDomain(): PublishersData =
 fun List<PublisherDbEntity>.mapToDomain(): List<PublishersData> = map { it.mapToDomain() }
 
 fun PublishersData.mapToData(): PublisherDbEntity =
-    PublisherDbEntity(publisherId, publisherName, publisherImage)
+    PublisherDbEntity(
+        publisherId,
+        publisherName,
+        publisherImage
+    )
 
 fun List<PublishersData>.mapToData(): List<PublisherDbEntity> = map { it.mapToData() }

@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 object NetworkModule {
-    private const val baseApi="https://api.rawg.io/api/"
+    private const val baseApi = "https://api.rawg.io/api/"
     @Provides
     @JvmStatic
     fun provideOkHttpClient(): OkHttpClient {

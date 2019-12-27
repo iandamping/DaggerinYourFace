@@ -15,7 +15,7 @@ import com.junemon.daggerinyourface.domain.repository.PublisherRepository
 import dagger.Binds
 import dagger.Module
 
-@Module(includes = [RetrofitHelperModule::class,DatabaseHelperModule::class])
+@Module(includes = [RetrofitHelperModule::class, DatabaseHelperModule::class])
 abstract class RepositoryDataModule {
 
     @Binds

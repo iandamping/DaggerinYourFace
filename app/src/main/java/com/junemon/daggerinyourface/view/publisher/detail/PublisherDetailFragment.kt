@@ -11,13 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
-import com.junemon.daggerinyourface.presentation.base.BaseFragment
-import com.junemon.daggerinyourface.databinding.ActivityDetailPublisherBinding
+import com.junemon.daggerinyourface.databinding.FragmentDetailGameBinding
 import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
-import com.junemon.daggerinyourface.view.root.RootActivity
-import com.junemon.daggerinyourface.presentation.vm.PublisherPresentationViewModel
+import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
 import com.junemon.daggerinyourface.presentation.model.mapToPresentation
+import com.junemon.daggerinyourface.presentation.vm.PublisherPresentationViewModel
+import com.junemon.daggerinyourface.view.root.RootActivity
 import javax.inject.Inject
 
 class PublisherDetailFragment : BaseFragment() {
@@ -29,7 +29,7 @@ class PublisherDetailFragment : BaseFragment() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private lateinit var binding: ActivityDetailPublisherBinding
+    private lateinit var binding: FragmentDetailGameBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -45,7 +45,7 @@ class PublisherDetailFragment : BaseFragment() {
     ): View? {
         val detailID by lazy { PublisherDetailFragmentArgs.fromBundle(arguments!!).publisherID }
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.activity_detail_publisher, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_detail_publisher, container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             observeData(detailID)
@@ -53,7 +53,7 @@ class PublisherDetailFragment : BaseFragment() {
         return binding.root
     }
 
-    fun ActivityDetailPublisherBinding.observeData(detailID: Int) {
+    fun FragmentDetailGameBinding.observeData(detailID: Int) {
         apply {
             viewModel.getDetailRemote(detailID).observe(viewLifecycleOwner, Observer { result ->
                 when (result.status) {
@@ -77,7 +77,7 @@ class PublisherDetailFragment : BaseFragment() {
         }
     }
 
-    private fun ActivityDetailPublisherBinding.consumeData(result: com.junemon.daggerinyourface.presentation.model.PublisherDetailPresentation?) {
+    private fun FragmentDetailGameBinding.consumeData(result: com.junemon.daggerinyourface.presentation.model.PublisherDetailPresentation?) {
         tvDesc.text = result?.description
         tvName.text = result?.publisherName
         loadImageHelper.run {

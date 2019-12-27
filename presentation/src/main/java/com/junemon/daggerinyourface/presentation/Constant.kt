@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import com.junemon.daggerinyourface.domain.model.GamePagingData
+import com.junemon.daggerinyourface.domain.model.PublisherPagingData
 import com.junemon.daggerinyourface.presentation.model.GamePresentation
 import com.junemon.daggerinyourface.presentation.model.PublisherPresentation
 
@@ -31,6 +33,20 @@ object Constant {
             oldItem == newItem
     }
 
+    val gamesPagingDiffCallbacks = object : DiffUtil.ItemCallback<GamePagingData>() {
+        override fun areItemsTheSame(
+            oldItem: GamePagingData,
+            newItem: GamePagingData
+        ): Boolean =
+            oldItem.gameName == newItem.gameName
+
+        override fun areContentsTheSame(
+            oldItem: GamePagingData,
+            newItem: GamePagingData
+        ): Boolean =
+            oldItem == newItem
+    }
+
     val publisherDiffCallbacks = object : DiffUtil.ItemCallback<PublisherPresentation>() {
         override fun areItemsTheSame(
             oldItem: PublisherPresentation,
@@ -44,6 +60,18 @@ object Constant {
         ): Boolean =
             oldItem == newItem
     }
+
+    val publisherPagingDiffCallbacks = object : DiffUtil.ItemCallback<PublisherPagingData>() {
+        override fun areItemsTheSame(
+            oldItem: PublisherPagingData,
+            newItem: PublisherPagingData
+        ): Boolean =
+            oldItem.publisherName == newItem.publisherName
+
+        override fun areContentsTheSame(
+            oldItem: PublisherPagingData,
+            newItem: PublisherPagingData
+        ): Boolean =
+            oldItem == newItem
+    }
 }
-
-

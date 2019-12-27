@@ -7,8 +7,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.junemon.daggerinyourface.MainApplication
 import com.junemon.daggerinyourface.R
-import com.junemon.daggerinyourface.presentation.base.BaseActivity
 import com.junemon.daggerinyourface.databinding.ActivityRootBinding
+import com.junemon.daggerinyourface.presentation.base.BaseActivity
 import com.junemon.daggerinyourface.view.root.component.RootActivityComponent
 
 class RootActivity : BaseActivity() {

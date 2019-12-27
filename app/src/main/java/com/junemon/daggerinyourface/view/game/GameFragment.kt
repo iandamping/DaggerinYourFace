@@ -12,18 +12,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
-import com.junemon.daggerinyourface.presentation.base.BaseFragment
+import com.junemon.daggerinyourface.databinding.FragmentGameBinding
 import com.junemon.daggerinyourface.domain.model.ResultToConsume
-import com.junemon.daggerinyourface.databinding.ActivityMainBinding
 import com.junemon.daggerinyourface.presentation.Constant.gamesDiffCallbacks
-import com.junemon.daggerinyourface.view.root.RootActivity
-import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel
+import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
 import com.junemon.daggerinyourface.presentation.model.GamePresentation
 import com.junemon.daggerinyourface.presentation.model.mapToPresentation
 import com.junemon.daggerinyourface.presentation.util.interfaces.RecyclerHelper
-import kotlinx.android.synthetic.main.item_games.view.*
+import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel
+import com.junemon.daggerinyourface.view.root.RootActivity
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.item_games.view.*
 
 class GameFragment : BaseFragment() {
 
@@ -38,14 +38,14 @@ class GameFragment : BaseFragment() {
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: FragmentGameBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             observeData()
@@ -60,7 +60,7 @@ class GameFragment : BaseFragment() {
             .getGamesPresentationComponent().create().inject(this)
     }
 
-    fun ActivityMainBinding.observeData() {
+    fun FragmentGameBinding.observeData() {
         apply {
             gameViewModel.getCache().observe(viewLifecycleOwner, Observer { result ->
                 when (result) {
@@ -79,12 +79,16 @@ class GameFragment : BaseFragment() {
                         setDialogShow(false)
                     }
                 }
+                textView2.setOnClickListener {
+                    it.findNavController()
+                        .navigate(GameFragmentDirections.actionGameFragmentToGamePagingFragment())
+                }
                 consumeData(result.data?.mapToPresentation())
             })
         }
     }
 
-    private fun ActivityMainBinding.consumeData(result: List<GamePresentation>?) {
+    private fun FragmentGameBinding.consumeData(result: List<GamePresentation>?) {
         recyclerHelper.run {
             rvMain.setUpVerticalListAdapter(items = result,
                 diffUtil = gamesDiffCallbacks,

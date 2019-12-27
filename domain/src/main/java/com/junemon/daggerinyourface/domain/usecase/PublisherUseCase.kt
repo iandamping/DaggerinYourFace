@@ -1,10 +1,8 @@
 package com.junemon.daggerinyourface.domain.usecase
 
 import androidx.lifecycle.LiveData
-import com.junemon.daggerinyourface.domain.model.PublishersData
-import com.junemon.daggerinyourface.domain.model.PublishersDetailData
-import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
-import com.junemon.daggerinyourface.domain.model.ResultToConsume
+import androidx.paging.PagedList
+import com.junemon.daggerinyourface.domain.model.*
 import com.junemon.daggerinyourface.domain.repository.PublisherRepository
 import javax.inject.Inject
 
@@ -14,4 +12,6 @@ class PublisherUseCase @Inject constructor(private val repository: PublisherRepo
 
     fun getDetailRemote(publisherID: Int): LiveData<ResultRemoteToConsume<PublishersDetailData>> =
         repository.getDetailRemote(publisherID)
+
+    fun getPaginationCache(): LiveData<PagedList<PublisherPagingData>> = repository.getPaginationCache()
 }

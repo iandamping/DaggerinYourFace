@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.data.datasource.model
 
 import com.google.gson.annotations.SerializedName
-import com.junemon.daggerinyourface.data.db.publisher.PublisherDbEntity
+import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDbEntity
 import com.junemon.daggerinyourface.domain.model.PublishersData
 
 data class GamesItem(
@@ -39,4 +39,3 @@ fun PublishersEntity.mapToDomain(): PublishersData =
     PublishersData(id, name, imageBackground)
 
 fun List<PublishersEntity>.mapToDomain(): List<PublishersData> = map { it.mapToDomain() }
-

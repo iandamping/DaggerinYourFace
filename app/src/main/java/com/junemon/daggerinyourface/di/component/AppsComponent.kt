@@ -1,11 +1,12 @@
 package com.junemon.daggerinyourface.di.component
 
 import android.app.Application
-import com.junemon.daggerinyourface.data.di.module.*
+import com.junemon.daggerinyourface.data.di.module.DatabaseModule
+import com.junemon.daggerinyourface.data.di.module.NetworkModule
+import com.junemon.daggerinyourface.data.di.module.RepositoryDataModule
 import com.junemon.daggerinyourface.di.scope.ApplicationScope
 import com.junemon.daggerinyourface.domain.di.RepositoryDomainModule
 import com.junemon.daggerinyourface.presentation.di.module.RepositoryPresentationModule
-import com.junemon.daggerinyourface.presentation.di.module.ViewModelModule
 import com.junemon.daggerinyourface.view.root.component.RootActivityComponent
 import dagger.BindsInstance
 import dagger.Component

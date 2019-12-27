@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.data.datasource.model
 
 import com.google.gson.annotations.SerializedName
-import com.junemon.daggerinyourface.data.db.game.GameDbEntity
+import com.junemon.daggerinyourface.data.db.game.normal.GameDbEntity
 import com.junemon.daggerinyourface.domain.model.GameData
 
 data class ShortScreenshotsItemEntity(
@@ -167,7 +167,11 @@ data class ParentPlatformsItem(
 )
 
 fun GamesEntity.mapToDatabase(): GameDbEntity =
-    GameDbEntity(id, name, backgroundImage)
+    GameDbEntity(
+        id,
+        name,
+        backgroundImage
+    )
 
 fun List<GamesEntity>.mapToDatabase(): List<GameDbEntity> = map { it.mapToDatabase() }
 
@@ -175,5 +179,3 @@ fun GamesEntity.mapToDomain(): GameData =
     GameData(id, name, backgroundImage)
 
 fun List<GamesEntity>.mapToDomain(): List<GameData> = map { it.mapToDomain() }
-
-

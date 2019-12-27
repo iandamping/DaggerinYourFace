@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.game
+package com.junemon.daggerinyourface.data.db.game.normal
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -17,6 +17,11 @@ fun GameDbEntity.mapToDomain(): GameData = GameData(gameId, gameName, gameImage)
 
 fun List<GameDbEntity>.mapToDomain(): List<GameData> = map { it.mapToDomain() }
 
-fun GameData.mapToData(): GameDbEntity = GameDbEntity(gameId, gameName, gameImage)
+fun GameData.mapToData(): GameDbEntity =
+    GameDbEntity(
+        gameId,
+        gameName,
+        gameImage
+    )
 
 fun List<GameData>.mapToData(): List<GameDbEntity> = map { it.mapToData() }

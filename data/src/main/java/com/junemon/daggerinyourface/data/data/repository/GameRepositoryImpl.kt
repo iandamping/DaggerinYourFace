@@ -3,12 +3,14 @@ package com.junemon.daggerinyourface.data.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.GameCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
-import com.junemon.daggerinyourface.domain.model.GameData
-import com.junemon.daggerinyourface.domain.model.GamesDetailData
-import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
-import com.junemon.daggerinyourface.domain.model.ResultToConsume
+import com.junemon.daggerinyourface.data.data.repository.paginationfactory.GamePaginationRepositoryFactory
+import com.junemon.daggerinyourface.data.datasource.model.mapToDomain
+import com.junemon.daggerinyourface.data.db.game.paging.mapToDomain
+import com.junemon.daggerinyourface.domain.model.*
 import com.junemon.daggerinyourface.domain.repository.GameRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.map
@@ -28,7 +30,7 @@ class GameRepositoryImpl @Inject constructor(
                 check(data.isNotEmpty()) {
                     " empty data from service"
                 }
-                cacheDataSource.setCache(data)
+                cacheDataSource.setCache(data.mapToDomain())
                 emitSource(cacheDataSource.getCache().map { ResultToConsume.Success(it) }.asLiveData())
             } catch (e: Exception) {
                 emitSource(cacheDataSource.getCache().map {
@@ -47,10 +49,15 @@ class GameRepositoryImpl @Inject constructor(
                 }
                 val data = remoteDataSource.getDetailGame(gameId)
                 checkNotNull(data)
-                emit(ResultRemoteToConsume.success(data))
+                emit(ResultRemoteToConsume.success(data.mapToDomain()))
             } catch (e: Exception) {
                 emit(ResultRemoteToConsume.error(e.message!!))
             }
         }
+    }
+
+    override fun getPaginationCache(): LiveData<PagedList<GamePagingData>> {
+        val dataSourceFactory = GamePaginationRepositoryFactory(cacheDataSource, remoteDataSource).map { it.mapToDomain() }
+        return LivePagedListBuilder(dataSourceFactory, GamePaginationRepositoryFactory.pagedListConfig()).build()
     }
 }

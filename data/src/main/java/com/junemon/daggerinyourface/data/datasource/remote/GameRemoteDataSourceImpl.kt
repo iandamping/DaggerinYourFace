@@ -1,11 +1,11 @@
 package com.junemon.daggerinyourface.data.datasource.remote
 
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
-import com.junemon.daggerinyourface.data.datasource.model.mapToDomain
+import com.junemon.daggerinyourface.data.datasource.model.GamesDetailEntity
+import com.junemon.daggerinyourface.data.datasource.model.GamesEntity
+import com.junemon.daggerinyourface.data.datasource.model.GamesPagingEntity
 import com.junemon.daggerinyourface.data.network.ApiInterface
 import com.junemon.daggerinyourface.data.util.interfaces.RetrofitHelper
-import com.junemon.daggerinyourface.domain.model.GameData
-import com.junemon.daggerinyourface.domain.model.GamesDetailData
 import javax.inject.Inject
 import kotlinx.coroutines.CompletableDeferred
 
@@ -13,18 +13,26 @@ class GameRemoteDataSourceImpl @Inject constructor(
     private val api: ApiInterface,
     private val retrofitHelper: RetrofitHelper
 ) : GameRemoteDataSource {
-    override suspend fun getGame(): List<GameData> {
-        val data: CompletableDeferred<List<GameData>> = CompletableDeferred()
+    override suspend fun getGame(): List<GamesEntity> {
+        val data: CompletableDeferred<List<GamesEntity>> = CompletableDeferred()
         retrofitHelper.run {
-            data.complete(api.getGames().doOneShot().data.mapToDomain())
+            data.complete(api.getGames().doOneShot().data)
         }
         return data.await()
     }
 
-    override suspend fun getDetailGame(gameID: Int): GamesDetailData {
-        val data: CompletableDeferred<GamesDetailData> = CompletableDeferred()
+    override suspend fun getDetailGame(gameID: Int): GamesDetailEntity {
+        val data: CompletableDeferred<GamesDetailEntity> = CompletableDeferred()
         retrofitHelper.run {
-            data.complete(api.getDetailGames(gameID).doOneShot().mapToDomain())
+            data.complete(api.getDetailGames(gameID).doOneShot())
+        }
+        return data.await()
+    }
+
+    override suspend fun getPaginationGame(page: Int): List<GamesPagingEntity> {
+        val data: CompletableDeferred<List<GamesPagingEntity>> = CompletableDeferred()
+        retrofitHelper.run {
+            data.complete(api.getPaginationGames(page).doOneShot().data)
         }
         return data.await()
     }

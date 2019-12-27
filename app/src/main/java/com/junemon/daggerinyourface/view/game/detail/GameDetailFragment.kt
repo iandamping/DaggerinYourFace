@@ -11,12 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
-import com.junemon.daggerinyourface.presentation.base.BaseFragment
-import com.junemon.daggerinyourface.databinding.ActivityDetailGameBinding
+import com.junemon.daggerinyourface.databinding.FragmentDetailGameBinding
 import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
-import com.junemon.daggerinyourface.view.root.RootActivity
-import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel
+import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
+import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel
+import com.junemon.daggerinyourface.view.root.RootActivity
 import javax.inject.Inject
 
 class GameDetailFragment : BaseFragment() {
@@ -24,7 +24,7 @@ class GameDetailFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var binding: ActivityDetailGameBinding
+    private lateinit var binding: FragmentDetailGameBinding
 
     private val viewModel: GamePresentationViewModel by viewModels { viewModelFactory }
 
@@ -44,7 +44,7 @@ class GameDetailFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val detailID by lazy { GameDetailFragmentArgs.fromBundle(arguments!!).gameID }
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_detail_game, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_game, container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             observeData(detailID)
@@ -52,7 +52,7 @@ class GameDetailFragment : BaseFragment() {
         return binding.root
     }
 
-    fun ActivityDetailGameBinding.observeData(detailID: Int) {
+    fun FragmentDetailGameBinding.observeData(detailID: Int) {
         apply {
             viewModel.getDetailRemote(detailID).observe(viewLifecycleOwner, Observer { result ->
                 when (result.status) {

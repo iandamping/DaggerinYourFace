@@ -2,7 +2,7 @@ package com.junemon.daggerinyourface.presentation.model
 
 import com.junemon.daggerinyourface.domain.model.PublishersData
 
-class PublisherPresentation(
+data class PublisherPresentation(
     val publisherId: Int,
     val publisherName: String,
     val publisherImage: String

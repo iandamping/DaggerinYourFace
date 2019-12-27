@@ -3,19 +3,22 @@ package com.junemon.daggerinyourface.data.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.PublisherCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherRemoteDataSource
-import com.junemon.daggerinyourface.domain.model.PublishersData
-import com.junemon.daggerinyourface.domain.model.PublishersDetailData
-import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
-import com.junemon.daggerinyourface.domain.model.ResultToConsume
+import com.junemon.daggerinyourface.data.data.repository.paginationfactory.PublisherPaginationRepositoryFactory
+import com.junemon.daggerinyourface.data.datasource.model.mapToDomain
+import com.junemon.daggerinyourface.data.db.game.paging.mapToDomain
+import com.junemon.daggerinyourface.data.db.publisher.paging.mapToDomain
+import com.junemon.daggerinyourface.domain.model.*
 import com.junemon.daggerinyourface.domain.repository.PublisherRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.map
 
 class PublisherRepositoryImpl @Inject constructor(
-    private val cacheDataSource:PublisherCacheDataSource,
-    private val remoteDataSource:PublisherRemoteDataSource
+    private val cacheDataSource: PublisherCacheDataSource,
+    private val remoteDataSource: PublisherRemoteDataSource
 ) : PublisherRepository {
     override fun getCache(): LiveData<ResultToConsume<List<PublishersData>>> {
         return liveData() {
@@ -28,7 +31,7 @@ class PublisherRepositoryImpl @Inject constructor(
                 check(data.isNotEmpty()) {
                     " empty data from service"
                 }
-                cacheDataSource.setCache(data)
+                cacheDataSource.setCache(data.mapToDomain())
                 emitSource(cacheDataSource.getCache().map { ResultToConsume.Success(it) }.asLiveData())
             } catch (e: Exception) {
                 emitSource(cacheDataSource.getCache().map {
@@ -47,10 +50,15 @@ class PublisherRepositoryImpl @Inject constructor(
                 }
                 val data = remoteDataSource.getDetailPublisher(publisherID)
                 checkNotNull(data)
-                emit(ResultRemoteToConsume.success(data))
+                emit(ResultRemoteToConsume.success(data.mapToDomain()))
             } catch (e: Exception) {
                 emit(ResultRemoteToConsume.error(e.message!!))
             }
         }
+    }
+
+    override fun getPaginationCache(): LiveData<PagedList<PublisherPagingData>> {
+        val dataSourceFactory = PublisherPaginationRepositoryFactory(cacheDataSource, remoteDataSource).map { it.mapToDomain() }
+        return LivePagedListBuilder(dataSourceFactory, PublisherPaginationRepositoryFactory.pagedListConfig()).build()
     }
 }
