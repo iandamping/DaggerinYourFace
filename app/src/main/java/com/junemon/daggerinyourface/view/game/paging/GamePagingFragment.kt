@@ -13,7 +13,7 @@ import androidx.navigation.findNavController
 import androidx.paging.PagedList
 import com.junemon.daggerinyourface.R
 import com.junemon.daggerinyourface.databinding.FragmentPagingGameBinding
-import com.junemon.daggerinyourface.domain.model.GamePagingData
+import com.junemon.daggerinyourface.model.domain.game.GamePagingData
 import com.junemon.daggerinyourface.presentation.Constant
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper

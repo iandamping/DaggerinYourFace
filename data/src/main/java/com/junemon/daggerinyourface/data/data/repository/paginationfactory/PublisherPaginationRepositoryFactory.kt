@@ -5,7 +5,7 @@ import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.PublisherCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherRemoteDataSource
 import com.junemon.daggerinyourface.data.data.repository.pagination.PublisherPaginationRepositoryImpl
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.model.data.database.publisher.PublisherPagingDbEntity
 
 class PublisherPaginationRepositoryFactory(
     private val cacheDataSource: PublisherCacheDataSource,

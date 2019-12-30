@@ -1,8 +1,8 @@
 package com.junemon.daggerinyourface.data.util.classes
 
 import com.junemon.daggerinyourface.data.db.game.normal.GameDao
-import com.junemon.daggerinyourface.data.db.game.normal.GameDbEntity
 import com.junemon.daggerinyourface.data.util.interfaces.GameDaoHelper
+import com.junemon.daggerinyourface.model.data.database.game.GameDbEntity
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 

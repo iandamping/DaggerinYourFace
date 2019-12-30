@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
 import com.junemon.daggerinyourface.databinding.FragmentDetailGameBinding
-import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
+import com.junemon.daggerinyourface.model.domain.ResultRemoteToConsume
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
 import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel

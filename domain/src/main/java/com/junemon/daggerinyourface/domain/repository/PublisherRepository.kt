@@ -2,7 +2,11 @@ package com.junemon.daggerinyourface.domain.repository
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.junemon.daggerinyourface.domain.model.*
+import com.junemon.daggerinyourface.model.domain.ResultRemoteToConsume
+import com.junemon.daggerinyourface.model.domain.ResultToConsume
+import com.junemon.daggerinyourface.model.domain.publisher.PublisherPagingData
+import com.junemon.daggerinyourface.model.domain.publisher.PublishersData
+import com.junemon.daggerinyourface.model.domain.publisher.PublishersDetailData
 
 interface PublisherRepository {
 

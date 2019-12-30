@@ -13,12 +13,12 @@ import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
 import com.junemon.daggerinyourface.databinding.FragmentPublisherBinding
-import com.junemon.daggerinyourface.domain.model.ResultToConsume
+import com.junemon.daggerinyourface.model.domain.ResultToConsume
 import com.junemon.daggerinyourface.presentation.Constant.publisherDiffCallbacks
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
-import com.junemon.daggerinyourface.presentation.model.PublisherPresentation
-import com.junemon.daggerinyourface.presentation.model.mapToPresentation
+import com.junemon.daggerinyourface.model.presentation.publisher.PublisherPresentation
+import com.junemon.daggerinyourface.model.presentation.publisher.mapToPresentation
 import com.junemon.daggerinyourface.presentation.util.interfaces.RecyclerHelper
 import com.junemon.daggerinyourface.presentation.vm.PublisherPresentationViewModel
 import com.junemon.daggerinyourface.view.root.RootActivity
@@ -82,7 +82,7 @@ class PublisherFragment : BaseFragment() {
                 textView3.setOnClickListener {
                     it.findNavController().navigate(PublisherFragmentDirections.actionPublisherFragmentToPublisherPagingFragment())
                 }
-                consumeData(result.data?.mapToPresentation())
+                consumeData(result?.data?.mapToPresentation())
             })
         }
     }

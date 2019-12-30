@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.junemon.daggerinyourface.domain.model.GamePagingData
-import com.junemon.daggerinyourface.domain.model.PublisherPagingData
-import com.junemon.daggerinyourface.presentation.model.GamePresentation
-import com.junemon.daggerinyourface.presentation.model.PublisherPresentation
+import com.junemon.daggerinyourface.model.domain.game.GamePagingData
+import com.junemon.daggerinyourface.model.domain.publisher.PublisherPagingData
+import com.junemon.daggerinyourface.model.presentation.game.GamePresentation
+import com.junemon.daggerinyourface.model.presentation.publisher.PublisherPresentation
 
-inline val Context.layoutInflater: android.view.LayoutInflater
-    get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as android.view.LayoutInflater
+inline val Context.layoutInflater: LayoutInflater
+    get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
 internal fun ViewGroup.inflates(layout: Int): View {
     return LayoutInflater.from(context).inflate(layout, this, false)

@@ -2,8 +2,8 @@ package com.junemon.daggerinyourface.data.util.classes
 
 import androidx.paging.DataSource
 import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDao
-import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
 import com.junemon.daggerinyourface.data.util.interfaces.GamePagingDaoHelper
+import com.junemon.daggerinyourface.model.data.database.game.GamePagingDbEntity
 import javax.inject.Inject
 
 class GamePagingDaoHelperImpl @Inject constructor(private val gamePagingDao: GamePagingDao) : GamePagingDaoHelper {

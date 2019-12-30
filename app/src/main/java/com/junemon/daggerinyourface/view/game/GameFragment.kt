@@ -13,12 +13,12 @@ import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
 import com.junemon.daggerinyourface.databinding.FragmentGameBinding
-import com.junemon.daggerinyourface.domain.model.ResultToConsume
+import com.junemon.daggerinyourface.model.domain.ResultToConsume
 import com.junemon.daggerinyourface.presentation.Constant.gamesDiffCallbacks
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
-import com.junemon.daggerinyourface.presentation.model.GamePresentation
-import com.junemon.daggerinyourface.presentation.model.mapToPresentation
+import com.junemon.daggerinyourface.model.presentation.game.GamePresentation
+import com.junemon.daggerinyourface.model.presentation.game.mapToPresentation
 import com.junemon.daggerinyourface.presentation.util.interfaces.RecyclerHelper
 import com.junemon.daggerinyourface.presentation.vm.GamePresentationViewModel
 import com.junemon.daggerinyourface.view.root.RootActivity

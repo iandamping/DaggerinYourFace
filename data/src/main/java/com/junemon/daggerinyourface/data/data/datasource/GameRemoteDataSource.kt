@@ -1,11 +1,11 @@
 package com.junemon.daggerinyourface.data.data.datasource
 
 import androidx.paging.DataSource
-import com.junemon.daggerinyourface.data.datasource.model.GamesDetailEntity
-import com.junemon.daggerinyourface.data.datasource.model.GamesEntity
-import com.junemon.daggerinyourface.data.datasource.model.GamesPagingEntity
-import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
-import com.junemon.daggerinyourface.domain.model.GameData
+import com.junemon.daggerinyourface.model.data.database.game.GamePagingDbEntity
+import com.junemon.daggerinyourface.model.data.remote.game.GamesDetailEntity
+import com.junemon.daggerinyourface.model.data.remote.game.GamesEntity
+import com.junemon.daggerinyourface.model.data.remote.game.GamesPagingEntity
+import com.junemon.daggerinyourface.model.domain.game.GameData
 import kotlinx.coroutines.flow.Flow
 
 interface GameRemoteDataSource {

@@ -1,11 +1,11 @@
 package com.junemon.daggerinyourface.data.datasource.remote
 
 import com.junemon.daggerinyourface.data.data.datasource.PublisherRemoteDataSource
-import com.junemon.daggerinyourface.data.datasource.model.PublisherDetailEntity
-import com.junemon.daggerinyourface.data.datasource.model.PublishersEntity
-import com.junemon.daggerinyourface.data.datasource.model.PublishersPagingEntity
 import com.junemon.daggerinyourface.data.network.ApiInterface
 import com.junemon.daggerinyourface.data.util.interfaces.RetrofitHelper
+import com.junemon.daggerinyourface.model.data.remote.publisher.PublisherDetailEntity
+import com.junemon.daggerinyourface.model.data.remote.publisher.PublishersEntity
+import com.junemon.daggerinyourface.model.data.remote.publisher.PublishersPagingEntity
 import javax.inject.Inject
 import kotlinx.coroutines.CompletableDeferred
 

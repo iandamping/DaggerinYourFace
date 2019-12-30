@@ -11,12 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerinyourface.R
-import com.junemon.daggerinyourface.databinding.FragmentDetailGameBinding
 import com.junemon.daggerinyourface.databinding.FragmentDetailPublisherBinding
-import com.junemon.daggerinyourface.domain.model.ResultRemoteToConsume
+import com.junemon.daggerinyourface.model.domain.ResultRemoteToConsume
+import com.junemon.daggerinyourface.model.presentation.publisher.PublisherDetailPresentation
+import com.junemon.daggerinyourface.model.presentation.publisher.mapToPresentation
 import com.junemon.daggerinyourface.presentation.base.BaseFragment
 import com.junemon.daggerinyourface.presentation.interfaces.LoadImageHelper
-import com.junemon.daggerinyourface.presentation.model.mapToPresentation
 import com.junemon.daggerinyourface.presentation.vm.PublisherPresentationViewModel
 import com.junemon.daggerinyourface.view.root.RootActivity
 import javax.inject.Inject
@@ -78,7 +78,7 @@ class PublisherDetailFragment : BaseFragment() {
         }
     }
 
-    private fun FragmentDetailPublisherBinding.consumeData(result: com.junemon.daggerinyourface.presentation.model.PublisherDetailPresentation?) {
+    private fun FragmentDetailPublisherBinding.consumeData(result: PublisherDetailPresentation?) {
         tvDesc.text = result?.description
         tvName.text = result?.publisherName
         loadImageHelper.run {

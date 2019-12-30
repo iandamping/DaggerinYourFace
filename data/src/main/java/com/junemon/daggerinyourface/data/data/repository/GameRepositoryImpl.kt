@@ -8,10 +8,13 @@ import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.GameCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
 import com.junemon.daggerinyourface.data.data.repository.paginationfactory.GamePaginationRepositoryFactory
-import com.junemon.daggerinyourface.data.datasource.model.mapToDomain
-import com.junemon.daggerinyourface.data.db.game.paging.mapToDomain
-import com.junemon.daggerinyourface.domain.model.*
 import com.junemon.daggerinyourface.domain.repository.GameRepository
+import com.junemon.daggerinyourface.model.data.dto.game.mapToDomain
+import com.junemon.daggerinyourface.model.domain.ResultRemoteToConsume
+import com.junemon.daggerinyourface.model.domain.ResultToConsume
+import com.junemon.daggerinyourface.model.domain.game.GameData
+import com.junemon.daggerinyourface.model.domain.game.GamePagingData
+import com.junemon.daggerinyourface.model.domain.game.GamesDetailData
 import javax.inject.Inject
 import kotlinx.coroutines.flow.map
 
@@ -30,7 +33,7 @@ class GameRepositoryImpl @Inject constructor(
                 check(data.isNotEmpty()) {
                     " empty data from service"
                 }
-                cacheDataSource.setCache(data.mapToDomain())
+                cacheDataSource.setCache(remoteDataSource.getGame().mapToDomain())
                 emitSource(cacheDataSource.getCache().map { ResultToConsume.Success(it) }.asLiveData())
             } catch (e: Exception) {
                 emitSource(cacheDataSource.getCache().map {

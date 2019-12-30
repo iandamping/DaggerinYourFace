@@ -1,6 +1,7 @@
 package com.junemon.daggerinyourface.data.db.publisher.normal
 
 import com.junemon.daggerinyourface.data.db.GameDatabase
+import com.junemon.daggerinyourface.model.data.database.publisher.PublisherDbEntity
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
