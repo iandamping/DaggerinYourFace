@@ -1,7 +1,7 @@
-package com.junemon.daggerinyourface.model.data.dto.publisher
+package com.junemon.daggerinyourface.data.util.dto.publisher
 
+import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
 import com.junemon.daggerinyourface.model.domain.publisher.PublisherPagingData
-import com.junemon.daggerinyourface.model.data.database.publisher.PublisherPagingDbEntity
 
 
 fun PublisherPagingDbEntity.mapToDomain(): PublisherPagingData =

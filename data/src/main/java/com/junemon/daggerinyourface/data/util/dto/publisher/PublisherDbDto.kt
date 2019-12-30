@@ -1,8 +1,8 @@
-package com.junemon.daggerinyourface.model.data.dto.publisher
+package com.junemon.daggerinyourface.data.util.dto.publisher
 
 
+import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDbEntity
 import com.junemon.daggerinyourface.model.domain.publisher.PublishersData
-import com.junemon.daggerinyourface.model.data.database.publisher.PublisherDbEntity
 
 
 fun PublisherDbEntity.mapToDomain(): PublishersData =

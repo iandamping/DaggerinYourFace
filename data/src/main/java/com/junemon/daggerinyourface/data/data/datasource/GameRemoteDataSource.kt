@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.data.data.datasource
 
 import androidx.paging.DataSource
-import com.junemon.daggerinyourface.model.data.database.game.GamePagingDbEntity
+import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesDetailEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesPagingEntity

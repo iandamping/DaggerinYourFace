@@ -5,7 +5,7 @@ import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.GameCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
 import com.junemon.daggerinyourface.data.data.repository.pagination.GamePaginationRepositoryImpl
-import com.junemon.daggerinyourface.model.data.database.game.GamePagingDbEntity
+import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
 
 class GamePaginationRepositoryFactory(
     private val cacheDataSource: GameCacheDataSource,

@@ -1,11 +1,11 @@
-package com.junemon.daggerinyourface.model.data.database.game
+package com.junemon.daggerinyourface.data.db.game.normal
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "table_game_pagination")
-data class GamePagingDbEntity(
+@Entity(tableName = "table_game")
+data class GameDbEntity(
     @PrimaryKey
     @ColumnInfo(name = "game_id") val gameId: Int,
     @ColumnInfo(name = "game_name") val gameName: String,

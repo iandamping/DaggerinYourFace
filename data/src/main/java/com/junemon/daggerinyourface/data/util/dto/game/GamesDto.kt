@@ -1,7 +1,7 @@
-package com.junemon.daggerinyourface.model.data.dto.game
+package com.junemon.daggerinyourface.data.util.dto.game
 
+import com.junemon.daggerinyourface.data.db.game.normal.GameDbEntity
 import com.junemon.daggerinyourface.model.domain.game.GameData
-import com.junemon.daggerinyourface.model.data.database.game.GameDbEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesEntity
 
 

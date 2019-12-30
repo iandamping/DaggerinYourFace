@@ -1,8 +1,8 @@
-package com.junemon.daggerinyourface.model.data.dto.game
+package com.junemon.daggerinyourface.data.util.dto.game
 
 
+import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
 import com.junemon.daggerinyourface.model.domain.game.GamePagingData
-import com.junemon.daggerinyourface.model.data.database.game.GamePagingDbEntity
 
 
 fun GamePagingDbEntity.mapToDomain(): GamePagingData = GamePagingData(gameId, gameName, gameImage)

@@ -1,8 +1,8 @@
 package com.junemon.daggerinyourface.data.util.classes
 
 import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDao
+import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDbEntity
 import com.junemon.daggerinyourface.data.util.interfaces.PublisherDaoHelper
-import com.junemon.daggerinyourface.model.data.database.publisher.PublisherDbEntity
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 

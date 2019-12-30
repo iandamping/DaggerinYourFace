@@ -2,11 +2,11 @@ package com.junemon.daggerinyourface.data.datasource.cache
 
 import androidx.paging.DataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherCacheDataSource
+import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
 import com.junemon.daggerinyourface.data.util.interfaces.PublisherDaoHelper
 import com.junemon.daggerinyourface.data.util.interfaces.PublisherPagingDaoHelper
-import com.junemon.daggerinyourface.model.data.database.publisher.PublisherPagingDbEntity
-import com.junemon.daggerinyourface.model.data.dto.publisher.mapToData
-import com.junemon.daggerinyourface.model.data.dto.publisher.mapToDomain
+import com.junemon.daggerinyourface.data.util.dto.publisher.mapToData
+import com.junemon.daggerinyourface.data.util.dto.publisher.mapToDomain
 import com.junemon.daggerinyourface.model.domain.publisher.PublishersData
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
