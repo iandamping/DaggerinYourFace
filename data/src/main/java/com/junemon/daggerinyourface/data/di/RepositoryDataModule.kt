@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.di.module
+package com.junemon.daggerinyourface.data.di
 
 import com.junemon.daggerinyourface.data.data.datasource.GameCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
@@ -12,6 +12,7 @@ import com.junemon.daggerinyourface.data.datasource.remote.GameRemoteDataSourceI
 import com.junemon.daggerinyourface.data.datasource.remote.PublisherRemoteDataSourceImpl
 import com.junemon.daggerinyourface.domain.repository.GameRepository
 import com.junemon.daggerinyourface.domain.repository.PublisherRepository
+import com.junemon.daggerinyourface.network.di.RetrofitHelperModule
 import dagger.Binds
 import dagger.Module
 

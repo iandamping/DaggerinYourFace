@@ -1,7 +1,8 @@
-package com.junemon.daggerinyourface.data.di.module
+package com.junemon.daggerinyourface.network.di
+
 
 import com.google.gson.GsonBuilder
-import com.junemon.daggerinyourface.data.network.ApiInterface
+import com.junemon.daggerinyourface.network.ApiInterface
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.TimeUnit
@@ -11,12 +12,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 @Module
 object NetworkModule {
     private const val baseApi = "https://api.rawg.io/api/"
     @Provides
     @JvmStatic
-    fun provideOkHttpClient(): OkHttpClient {
+    internal fun provideOkHttpClient(): OkHttpClient {
         val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
             .connectTimeout(60L, TimeUnit.SECONDS)
             .writeTimeout(60L, TimeUnit.SECONDS)
@@ -36,7 +38,7 @@ object NetworkModule {
 
     @Provides
     @JvmStatic
-    fun provideRetrofit(): Retrofit {
+    internal fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))

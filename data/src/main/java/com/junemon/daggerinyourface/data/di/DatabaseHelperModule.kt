@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.di.module
+package com.junemon.daggerinyourface.data.di
 
 import com.junemon.daggerinyourface.data.util.classes.GameDaoHelperImpl
 import com.junemon.daggerinyourface.data.util.classes.GamePagingDaoHelperImpl

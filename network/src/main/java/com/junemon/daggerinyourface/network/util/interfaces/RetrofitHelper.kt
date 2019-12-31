@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.util.interfaces
+package com.junemon.daggerinyourface.network.util.interfaces
 
 import retrofit2.Call
 

@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.di.module
+package com.junemon.daggerinyourface.data.di
 
 import android.app.Application
 import androidx.room.Room

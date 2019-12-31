@@ -1,19 +1,17 @@
-package com.junemon.daggerinyourface.data.util.classes
+package com.junemon.daggerinyourface.network.util.classes
 
-import com.junemon.daggerinyourface.data.util.interfaces.RetrofitHelper
+import com.junemon.daggerinyourface.network.util.interfaces.RetrofitHelper
 import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 class RetrofitHelperImpl @Inject constructor() :
     RetrofitHelper {
 
-    @ExperimentalCoroutinesApi
     override suspend fun <T> Call<T>.doOneShot(): T =
         suspendCancellableCoroutine { cancellableContinuation ->
 

@@ -1,11 +1,11 @@
 package com.junemon.daggerinyourface.data.datasource.remote
 
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
-import com.junemon.daggerinyourface.data.network.ApiInterface
-import com.junemon.daggerinyourface.data.util.interfaces.RetrofitHelper
+import com.junemon.daggerinyourface.network.util.interfaces.RetrofitHelper
 import com.junemon.daggerinyourface.model.data.remote.game.GamesDetailEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesEntity
 import com.junemon.daggerinyourface.model.data.remote.game.GamesPagingEntity
+import com.junemon.daggerinyourface.network.ApiInterface
 import javax.inject.Inject
 import kotlinx.coroutines.CompletableDeferred
 

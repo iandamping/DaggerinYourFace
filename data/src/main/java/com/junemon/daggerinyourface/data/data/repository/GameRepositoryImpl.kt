@@ -60,6 +60,22 @@ class GameRepositoryImpl @Inject constructor(
         }
     }
 
+    /*override fun getDetailRemote(gameId: Int): LiveData<Results<GamesDetailData>> {
+       return liveData {
+           try {
+               emit(Results.Loading)
+               require(gameId != 0) {
+                   "id passed from main is 0"
+               }
+               val data = remoteDataSource.getDetailGame(gameId)
+               checkNotNull(data)
+               emit(Results.Success(data.mapToDomain()))
+           } catch (e: Exception) {
+               emit(Results.Error(e))
+           }
+       }
+   }*/
+
     override fun getPaginationCache(): LiveData<PagedList<GamePagingData>> {
         val dataSourceFactory = GamePaginationRepositoryFactory(cacheDataSource, remoteDataSource).map { it.mapToDomain() }
         return LivePagedListBuilder(dataSourceFactory, GamePaginationRepositoryFactory.pagedListConfig()).build()
