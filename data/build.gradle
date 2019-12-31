@@ -38,6 +38,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':model')
     implementation project(':network')
+    implementation project(':cache')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -51,10 +52,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$livedata_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$livedata_version"
-    //room
-    implementation "androidx.room:room-runtime:$room_version"
-    api "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+
     //paging
     implementation "androidx.paging:paging-runtime:$paging_version"
 

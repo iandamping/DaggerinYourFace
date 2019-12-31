@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.di.component
 
 import android.app.Application
-import com.junemon.daggerinyourface.data.di.DatabaseModule
+import com.junemon.daggerinyourface.cache.di.DatabaseModule
 import com.junemon.daggerinyourface.data.di.RepositoryDataModule
 import com.junemon.daggerinyourface.di.scope.ApplicationScope
 import com.junemon.daggerinyourface.domain.di.RepositoryDomainModule
