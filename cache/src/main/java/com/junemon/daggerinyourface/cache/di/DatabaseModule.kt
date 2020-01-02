@@ -3,10 +3,10 @@ package com.junemon.daggerinyourface.cache.di
 import android.app.Application
 import androidx.room.Room
 import com.junemon.daggerinyourface.cache.GameDatabase
-import com.junemon.daggerinyourface.data.db.game.normal.GameDao
-import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDao
-import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDao
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDao
+import com.junemon.daggerinyourface.cache.game.normal.GameDao
+import com.junemon.daggerinyourface.cache.game.paging.GamePagingDao
+import com.junemon.daggerinyourface.cache.publisher.normal.PublisherDao
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDao
 import dagger.Module
 import dagger.Provides
 

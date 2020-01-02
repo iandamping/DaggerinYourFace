@@ -1,10 +1,11 @@
-package com.junemon.daggerinyourface.data.db.game.paging
+package com.junemon.daggerinyourface.cache.game.paging
 
 import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.junemon.daggerinyourface.cache.game.paging.GamePagingDbEntity
 
 @Dao
 interface GamePagingDao {

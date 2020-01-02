@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.game.normal
+package com.junemon.daggerinyourface.cache.game.normal
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

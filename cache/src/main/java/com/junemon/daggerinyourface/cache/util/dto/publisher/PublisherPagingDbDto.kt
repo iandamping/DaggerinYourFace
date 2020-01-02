@@ -1,6 +1,6 @@
-package com.junemon.daggerinyourface.data.util.dto.publisher
+package com.junemon.daggerinyourface.cache.util.dto.publisher
 
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDbEntity
 import com.junemon.daggerinyourface.model.domain.publisher.PublisherPagingData
 
 

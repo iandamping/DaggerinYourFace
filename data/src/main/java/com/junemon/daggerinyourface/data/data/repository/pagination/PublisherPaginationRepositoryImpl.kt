@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherRemoteDataSource
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
-import com.junemon.daggerinyourface.data.util.dto.publisher.mapToDatabase
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.cache.util.dto.publisher.mapToDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

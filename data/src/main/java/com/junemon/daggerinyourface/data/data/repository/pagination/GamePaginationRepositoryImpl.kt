@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.GameRemoteDataSource
-import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
-import com.junemon.daggerinyourface.data.util.dto.game.mapToDatabase
+import com.junemon.daggerinyourface.cache.game.paging.GamePagingDbEntity
+import com.junemon.daggerinyourface.cache.util.dto.game.mapToDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

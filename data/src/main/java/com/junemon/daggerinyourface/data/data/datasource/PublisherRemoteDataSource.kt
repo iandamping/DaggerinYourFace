@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.data.data.datasource
 
 import androidx.paging.DataSource
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDbEntity
 import com.junemon.daggerinyourface.model.data.remote.publisher.PublisherDetailEntity
 import com.junemon.daggerinyourface.model.data.remote.publisher.PublishersEntity
 import com.junemon.daggerinyourface.model.data.remote.publisher.PublishersPagingEntity

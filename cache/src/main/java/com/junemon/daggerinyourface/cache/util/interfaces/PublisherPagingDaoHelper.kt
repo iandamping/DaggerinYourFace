@@ -1,7 +1,7 @@
 package com.junemon.daggerinyourface.cache.util.interfaces
 
 import androidx.paging.DataSource
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDbEntity
 
 interface PublisherPagingDaoHelper {
 

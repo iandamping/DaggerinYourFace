@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.game.normal
+package com.junemon.daggerinyourface.cache.game.normal
 
 import com.junemon.daggerinyourface.cache.GameDatabase
 import javax.inject.Inject

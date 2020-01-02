@@ -1,9 +1,10 @@
-package com.junemon.daggerinyourface.data.db.game.normal
+package com.junemon.daggerinyourface.cache.game.normal
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.junemon.daggerinyourface.cache.game.normal.GameDbEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

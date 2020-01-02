@@ -1,4 +1,4 @@
-package com.junemon.daggerinyourface.data.db.publisher.paging
+package com.junemon.daggerinyourface.cache.publisher.paging
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

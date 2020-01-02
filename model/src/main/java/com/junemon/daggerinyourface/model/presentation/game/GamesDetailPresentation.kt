@@ -9,10 +9,3 @@ class GamesDetailPresentation(
     val gameImage: String
 )
 
-fun GamesDetailData.mapToPresentation(): GamesDetailPresentation =
-    GamesDetailPresentation(
-        gameId,
-        gameName,
-        gameDescription,
-        gameImage
-    )

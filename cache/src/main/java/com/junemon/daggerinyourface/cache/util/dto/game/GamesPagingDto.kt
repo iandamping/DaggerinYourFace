@@ -1,6 +1,6 @@
-package com.junemon.daggerinyourface.data.util.dto.game
+package com.junemon.daggerinyourface.cache.util.dto.game
 
-import com.junemon.daggerinyourface.data.db.game.paging.GamePagingDbEntity
+import com.junemon.daggerinyourface.cache.game.paging.GamePagingDbEntity
 import com.junemon.daggerinyourface.model.domain.game.GamePagingData
 import com.junemon.daggerinyourface.model.data.remote.game.GamesPagingEntity
 

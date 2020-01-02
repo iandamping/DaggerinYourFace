@@ -2,8 +2,8 @@ package com.junemon.daggerinyourface.cache.util.classes
 
 import androidx.paging.DataSource
 import com.junemon.daggerinyourface.cache.util.interfaces.PublisherPagingDaoHelper
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDao
-import com.junemon.daggerinyourface.data.db.publisher.paging.PublisherPagingDbEntity
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDao
+import com.junemon.daggerinyourface.cache.publisher.paging.PublisherPagingDbEntity
 import javax.inject.Inject
 
 class PublisherPagingDaoHelperImpl @Inject constructor(private val publisherPagingDao: PublisherPagingDao) :

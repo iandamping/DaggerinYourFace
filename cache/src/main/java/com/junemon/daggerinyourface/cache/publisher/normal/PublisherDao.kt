@@ -1,9 +1,10 @@
-package com.junemon.daggerinyourface.data.db.publisher.normal
+package com.junemon.daggerinyourface.cache.publisher.normal
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.junemon.daggerinyourface.cache.publisher.normal.PublisherDbEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

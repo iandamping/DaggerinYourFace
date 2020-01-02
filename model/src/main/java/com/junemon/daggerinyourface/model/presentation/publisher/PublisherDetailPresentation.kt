@@ -8,9 +8,3 @@ data class PublisherDetailPresentation(
     val description: String
 )
 
-fun PublishersDetailData.mapToPresentation(): PublisherDetailPresentation =
-    PublisherDetailPresentation(
-        publisherName,
-        publisherImage,
-        description
-    )

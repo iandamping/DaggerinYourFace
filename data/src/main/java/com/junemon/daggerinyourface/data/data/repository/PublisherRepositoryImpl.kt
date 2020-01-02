@@ -8,7 +8,7 @@ import androidx.paging.PagedList
 import com.junemon.daggerinyourface.data.data.datasource.PublisherCacheDataSource
 import com.junemon.daggerinyourface.data.data.datasource.PublisherRemoteDataSource
 import com.junemon.daggerinyourface.data.data.repository.paginationfactory.PublisherPaginationRepositoryFactory
-import com.junemon.daggerinyourface.data.util.dto.publisher.mapToDomain
+import com.junemon.daggerinyourface.cache.util.dto.publisher.mapToDomain
 import com.junemon.daggerinyourface.domain.repository.PublisherRepository
 import com.junemon.daggerinyourface.model.data.dto.publisher.mapToDomain
 import com.junemon.daggerinyourface.model.domain.ResultRemoteToConsume

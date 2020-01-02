@@ -1,6 +1,6 @@
 package com.junemon.daggerinyourface.cache.util.interfaces
 
-import com.junemon.daggerinyourface.data.db.publisher.normal.PublisherDbEntity
+import com.junemon.daggerinyourface.cache.publisher.normal.PublisherDbEntity
 import kotlinx.coroutines.flow.Flow
 
 interface PublisherDaoHelper {
