@@ -1,6 +1,6 @@
 package com.junemon.daggerin.dagger
 
-import com.junemon.daggerin.attribute.GoblinAttribute
+import com.junemon.daggerin.attribute.DragonAttribute
 import dagger.Module
 import dagger.Provides
 
@@ -11,8 +11,8 @@ import dagger.Provides
  * Indonesia.
  */
 @Module
-object GoblinModule {
+object AttributeModule {
 
     @Provides
-    fun provideGoblinAttribute(): GoblinAttribute = GoblinAttribute()
+    fun provideDragonAttribute(): DragonAttribute = DragonAttribute()
 }

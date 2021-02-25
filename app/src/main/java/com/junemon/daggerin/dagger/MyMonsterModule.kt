@@ -1,7 +1,6 @@
 package com.junemon.daggerin.dagger
 
 import com.junemon.daggerin.monster.Dragon
-import com.junemon.daggerin.monster.Goblin
 import com.junemon.daggerin.monster.Monster
 import dagger.Binds
 import dagger.Module
@@ -12,11 +11,9 @@ import dagger.Module
  * Indonesia.
  */
 @Module
-abstract class MonsterModule {
+abstract class MyMonsterModule {
 
     @Binds
     abstract fun bindsDragon(dragon: Dragon): Monster
 
-    @Binds
-    abstract fun bindsGoblin(goblin: Goblin): Monster
 }
