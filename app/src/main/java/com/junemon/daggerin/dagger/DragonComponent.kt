@@ -8,7 +8,7 @@ import dagger.Component
  * Github https://github.com/iandamping
  * Indonesia.
  */
-@Component(modules = [DragonModule::class])
+@Component
 interface DragonComponent {
 
     fun getDragon(): Dragon
