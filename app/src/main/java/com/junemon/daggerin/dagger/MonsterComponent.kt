@@ -1,6 +1,7 @@
 package com.junemon.daggerin.dagger
 
 import com.junemon.daggerin.monster.Dragon
+import com.junemon.daggerin.monster.Goblin
 import dagger.Component
 
 /**
@@ -8,9 +9,11 @@ import dagger.Component
  * Github https://github.com/iandamping
  * Indonesia.
  */
-@Component(modules = [DragonModule::class])
-interface DragonComponent {
+@Component(modules = [DragonModule::class, GoblinModule::class, MonsterModule::class])
+interface MonsterComponent {
 
     fun getDragon(): Dragon
+
+    fun getGoblin(): Goblin
 
 }
