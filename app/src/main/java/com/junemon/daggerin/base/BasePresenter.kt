@@ -18,7 +18,6 @@ import timber.log.Timber
 
 abstract class BasePresenter<out View>(private val viewsPassed:View) : LifecycleObserver{
     private val job by lazy { Job() }
-    protected var customScope = CoroutineScope(Dispatchers.Main + job + getJobErrorHandler())
 
     private lateinit var lifecycleOwner: FragmentActivity
     private lateinit var alert: AlertDialog

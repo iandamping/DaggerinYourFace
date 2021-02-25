@@ -1,14 +1,14 @@
 package com.junemon.daggerin.feature.main.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
-import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.R
+import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
+import com.junemon.daggerin.di.injector.activityComponent
 import com.junemon.daggerin.feature.publisher.view.PublisherActivity
 import com.junemon.daggerin.model.GameCallback
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
@@ -29,9 +29,7 @@ class MainActivity : AppCompatActivity(),
     lateinit var loadImageHelper: LoadImageHelper
 
     private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getMainActivityComponent().inject(this).injectActivity(this)
-
+        activityComponent().getMainActivityComponent().provideView(this).inject(this)
     }
 
     private lateinit var binding: ActivityMainBinding

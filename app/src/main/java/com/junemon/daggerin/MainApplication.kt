@@ -2,15 +2,11 @@ package com.junemon.daggerin
 
 import android.app.Application
 import com.junemon.daggerin.di.component.AppsComponent
+import com.junemon.daggerin.di.component.AppsComponentProvider
 import com.junemon.daggerin.di.component.DaggerAppsComponent
 import timber.log.Timber
 
-open class MainApplication : Application() {
-
-    val appComponent: AppsComponent by lazy {
-        initializeComponent()
-    }
-
+open class MainApplication : Application(), AppsComponentProvider {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,9 +15,7 @@ open class MainApplication : Application() {
         }
     }
 
-    open fun initializeComponent(): AppsComponent {
-        // Creates an instance of AppComponent using its Factory constructor
-        // We pass the application that will be used as Context in the graph
+    override fun provideAppComponent(): AppsComponent {
         return DaggerAppsComponent.factory().injectApplication(this)
     }
 }

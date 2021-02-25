@@ -1,20 +1,24 @@
 package com.junemon.daggerin.di.module
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.junemon.daggerin.db.GameDatabase
 import com.junemon.daggerin.db.game.GameDao
+import com.junemon.daggerin.di.qualifier.ApplicationContext
+import com.junemon.daggerin.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 object DatabaseModule {
 
     @Provides
     @JvmStatic
-    fun provideDb(app: Application): GameDatabase {
+    @ApplicationScope
+    fun provideDb(@ApplicationContext context: Context): GameDatabase {
         return Room
-            .databaseBuilder(app, GameDatabase::class.java, "games.db")
+            .databaseBuilder(context, GameDatabase::class.java, "games.db")
             .fallbackToDestructiveMigration()
             .build()
     }
