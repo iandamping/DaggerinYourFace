@@ -6,14 +6,15 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.R
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
-import com.junemon.daggerin.di.injector.activityComponent
 import com.junemon.daggerin.model.PublisherCallback
 import com.junemon.daggerin.model.PublishersEntity
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import com.junemon.daggerin.util.interfaces.RecyclerHelper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.item_publisher.view.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class PublisherActivity : AppCompatActivity(),
     PublisherView {
 
@@ -26,15 +27,11 @@ class PublisherActivity : AppCompatActivity(),
     @Inject
     lateinit var loadImageHelper: LoadImageHelper
 
-    private fun daggerInjection() {
-        activityComponent().getPublisherActivityComponent().provideView(this).inject(this)
-    }
 
     private lateinit var binding: ActivityPublisherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        daggerInjection()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_publisher)
         presenter.apply {
             attachLifecycle(this@PublisherActivity)

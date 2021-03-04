@@ -6,6 +6,8 @@ import com.junemon.daggerin.di.qualifier.MainApplicationCoroutineScope
 import com.junemon.daggerin.di.qualifier.MainDispatcher
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -16,6 +18,7 @@ import kotlinx.coroutines.SupervisorJob
  * Indonesia.
  */
 @Module
+@InstallIn(SingletonComponent::class)
 object CoroutineScopeModule {
 
     @DefaultApplicationCoroutineScope

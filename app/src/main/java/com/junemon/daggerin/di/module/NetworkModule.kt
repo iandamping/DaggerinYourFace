@@ -2,10 +2,11 @@ package com.junemon.daggerin.di.module
 
 import com.google.gson.GsonBuilder
 import com.junemon.daggerin.BuildConfig
-import com.junemon.daggerin.di.scope.ApplicationScope
 import com.junemon.daggerin.network.ApiInterface
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,11 +16,11 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
-    @JvmStatic
-    @ApplicationScope
+    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
             .connectTimeout(60L, TimeUnit.SECONDS)
@@ -39,8 +40,7 @@ object NetworkModule {
     }
 
     @Provides
-    @JvmStatic
-    @ApplicationScope
+    @Singleton
     fun provideApiInterface(okHttpClient: OkHttpClient): ApiInterface {
         return Retrofit.Builder()
             .client(okHttpClient)

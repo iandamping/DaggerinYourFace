@@ -22,10 +22,13 @@ import com.junemon.daggerin.di.qualifier.MainDispatcher
 import com.junemon.daggerin.di.qualifier.MainImmediateDispatcher
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 @Module
+@InstallIn(SingletonComponent::class)
 object CoroutinesModule {
 
     @DefaultDispatcher

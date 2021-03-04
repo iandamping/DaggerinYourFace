@@ -1,12 +1,11 @@
 package com.junemon.daggerin
 
 import android.app.Application
-import com.junemon.daggerin.di.component.AppsComponent
-import com.junemon.daggerin.di.component.AppsComponentProvider
-import com.junemon.daggerin.di.component.DaggerAppsComponent
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-open class MainApplication : Application(), AppsComponentProvider {
+@HiltAndroidApp
+open class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -15,7 +14,5 @@ open class MainApplication : Application(), AppsComponentProvider {
         }
     }
 
-    override fun provideAppComponent(): AppsComponent {
-        return DaggerAppsComponent.factory().injectApplication(this)
-    }
+
 }
