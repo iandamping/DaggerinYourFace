@@ -2,8 +2,6 @@ package com.junemon.daggerin.di.component
 
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.di.module.*
-import com.junemon.daggerin.di.qualifier.DefaultApplicationCoroutineScope
-import com.junemon.daggerin.di.qualifier.MainApplicationCoroutineScope
 import com.junemon.daggerin.di.scope.ApplicationScope
 import com.junemon.daggerin.feature.main.component.MainActivityComponent
 import com.junemon.daggerin.feature.publisher.component.PublisherActivityComponent
@@ -21,7 +19,8 @@ import dagger.Component
         DatabaseModule::class,
         RetrofitHelperModule::class,
         DatabaseHelperModule::class,
-        RecyclerHelperModule::class]
+        RecyclerHelperModule::class,
+        ApplicationSubcomponents::class]
 )
 interface AppsComponent {
 
