@@ -1,5 +1,6 @@
 package com.junemon.daggerin.dagger
 
+import android.content.Context
 import com.junemon.daggerin.attribute.DragonAttribute
 import dagger.Module
 import dagger.Provides
@@ -14,5 +15,5 @@ import dagger.Provides
 object AttributeModule {
 
     @Provides
-    fun provideDragonAttribute(): DragonAttribute = DragonAttribute()
+    fun provideDragonAttribute(context: Context): DragonAttribute = DragonAttribute(context)
 }

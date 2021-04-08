@@ -1,7 +1,8 @@
 package com.junemon.daggerin.dagger
 
 import com.junemon.daggerin.MainActivity
-import com.junemon.daggerin.monster.MyMonster
+import com.junemon.daggerin.MainApplication
+import dagger.BindsInstance
 import dagger.Component
 
 /**
@@ -9,9 +10,15 @@ import dagger.Component
  * Github https://github.com/iandamping
  * Indonesia.
  */
-@Component(modules = [AttributeModule::class, MyMonsterModule::class])
+@Component(modules = [AttributeModule::class, MyMonsterModule::class, ContextModule::class])
 interface MonsterComponent {
 
-    fun inject(activity:MainActivity)
+    fun inject(activity: MainActivity)
+
+    @Component.Factory
+    interface Factory {
+        fun inject(@BindsInstance application: MainApplication): MonsterComponent
+    }
 
 }
+
