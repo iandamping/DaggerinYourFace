@@ -1,5 +1,6 @@
 package com.junemon.daggerin.dagger
 
+import com.junemon.daggerin.MainActivity
 import com.junemon.daggerin.monster.MyMonster
 import dagger.Component
 
@@ -11,6 +12,6 @@ import dagger.Component
 @Component(modules = [AttributeModule::class, MyMonsterModule::class])
 interface MonsterComponent {
 
-    fun getMyMonster(): MyMonster
+    fun inject(activity:MainActivity)
 
 }
