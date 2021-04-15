@@ -1,4 +1,4 @@
-package com.junemon.daggerin.base.adapter
+package com.junemon.daggerin.base
 
 import android.app.AlertDialog
 import android.content.Context

@@ -2,18 +2,15 @@ package com.junemon.daggerin.feature.publisher.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.base.adapter.BaseActivity
+import com.junemon.daggerin.base.BaseActivity
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.db.publisher.PublisherDbEntity
 import com.junemon.daggerin.di.injector.inject
 import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailActivity
-import com.junemon.daggerin.feature.main.view.MainActivity
 import com.junemon.daggerin.model.publisher.PublisherCallback
 import com.junemon.daggerin.util.Constant.intentPublisherDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper

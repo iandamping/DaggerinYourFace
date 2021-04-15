@@ -2,13 +2,11 @@ package com.junemon.daggerin.feature.main.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
-import com.junemon.daggerin.base.adapter.BaseActivity
+import com.junemon.daggerin.base.BaseActivity
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
 import com.junemon.daggerin.di.injector.inject
