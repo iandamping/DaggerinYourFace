@@ -10,13 +10,15 @@ import dagger.Component
  * Github https://github.com/iandamping
  * Indonesia.
  */
-@Component(modules = [AttributeModule::class, MyMonsterModule::class, ContextModule::class])
+@Component(modules = [MyMonsterModule::class, ContextModule::class])
 interface MonsterComponent {
 
     fun inject(activity: MainActivity)
 
+    // Factory to create instances of the MonsterComponent
     @Component.Factory
     interface Factory {
+        // With @BindsInstance, the Context passed in will be available in the graph
         fun inject(@BindsInstance application: MainApplication): MonsterComponent
     }
 
