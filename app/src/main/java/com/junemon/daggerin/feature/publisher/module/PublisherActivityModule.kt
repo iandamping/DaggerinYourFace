@@ -1,7 +1,7 @@
 package com.junemon.daggerin.feature.publisher.module
 
 import androidx.lifecycle.ViewModel
-import com.android.example.github.di.ViewModelKey
+import com.junemon.daggerin.di.factory.ViewModelKey
 import com.junemon.daggerin.feature.publisher.view.PublisherViewModel
 import dagger.Binds
 import dagger.Module

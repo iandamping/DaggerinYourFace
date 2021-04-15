@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.junemon.daggerin.db.GameDatabase
 import com.junemon.daggerin.db.game.GameDao
 import com.junemon.daggerin.db.publisher.PublisherDao
+import com.junemon.daggerin.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides
 
@@ -13,6 +14,7 @@ object DatabaseModule {
 
     @Provides
     @JvmStatic
+    @ApplicationScope
     fun provideDb(app: Application): GameDatabase {
         return Room
             .databaseBuilder(app, GameDatabase::class.java, "games.db")

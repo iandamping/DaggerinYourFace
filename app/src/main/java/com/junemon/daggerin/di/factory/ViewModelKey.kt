@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.example.github.di
+package com.junemon.daggerin.di.factory
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

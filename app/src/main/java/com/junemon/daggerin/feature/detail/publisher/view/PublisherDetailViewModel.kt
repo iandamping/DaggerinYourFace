@@ -1,33 +1,30 @@
 package com.junemon.daggerin.feature.detail.publisher.view
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.junemon.daggerin.base.BaseViewModel
-import com.junemon.daggerin.base.ResultRemoteToConsume
 import com.junemon.daggerin.model.publisher.PublisherDetailEntity
+import com.junemon.daggerin.model.state.Results
 import com.junemon.daggerin.network.ApiInterface
 import com.junemon.daggerin.util.interfaces.RetrofitHelper
 import javax.inject.Inject
 
 class PublisherDetailViewModel @Inject constructor(
     private val api: ApiInterface,
-    private val retrofitHelper: RetrofitHelper
-) : BaseViewModel() {
+    retrofitHelper: RetrofitHelper
+) : RetrofitHelper by retrofitHelper, ViewModel() {
 
-    fun getData(id: Int): LiveData<ResultRemoteToConsume<PublisherDetailEntity>> {
+    fun getData(id: Int): LiveData<Results<PublisherDetailEntity>> {
         return liveData {
             try {
-                emit(ResultRemoteToConsume.loading())
+                emit(Results.Loading)
                 require(id != 0) {
                     "id passed from main is 0"
                 }
-                retrofitHelper.run {
-                    val data = api.getDetailPublisher(id).doOneShot()
-                    checkNotNull(data)
-                    emit(ResultRemoteToConsume.success(data))
-                }
+                val data = api.getDetailPublisher(id).doOneShot()
+                emit(Results.Success(data))
             } catch (e: Exception) {
-                emit(ResultRemoteToConsume.error(e.message!!))
+                emit(Results.Error(e.message!!))
             }
         }
     }

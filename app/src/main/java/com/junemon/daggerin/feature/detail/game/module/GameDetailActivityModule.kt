@@ -1,7 +1,7 @@
-package com.junemon.daggerin.feature.detail.game.view.module
+package com.junemon.daggerin.feature.detail.game.module
 
 import androidx.lifecycle.ViewModel
-import com.android.example.github.di.ViewModelKey
+import com.junemon.daggerin.di.factory.ViewModelKey
 import com.junemon.daggerin.feature.detail.game.view.GameDetailViewModel
 import dagger.Binds
 import dagger.Module
