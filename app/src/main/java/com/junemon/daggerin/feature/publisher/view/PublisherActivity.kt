@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
+import com.junemon.daggerin.base.adapter.BaseActivity
 import com.junemon.daggerin.databinding.ActivityPublisherBinding
 import com.junemon.daggerin.db.publisher.PublisherDbEntity
+import com.junemon.daggerin.di.injector.inject
 import com.junemon.daggerin.feature.detail.publisher.view.PublisherDetailActivity
 import com.junemon.daggerin.feature.main.view.MainActivity
 import com.junemon.daggerin.model.publisher.PublisherCallback
@@ -18,7 +21,7 @@ import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_publisher.view.*
 import javax.inject.Inject
 
-class PublisherActivity : AppCompatActivity(),
+class PublisherActivity : BaseActivity(),
     PublisherView {
     @Inject
     lateinit var presenter: PublisherPresenter
@@ -30,20 +33,18 @@ class PublisherActivity : AppCompatActivity(),
     lateinit var loadImageHelper: LoadImageHelper
 
     private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getPublisherActivityComponent().inject(this).injectActivity(this)
+        inject().getPublisherActivityComponent().inject(this).injectActivity(this)
 
     }
 
     private lateinit var binding: ActivityPublisherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
         super.onCreate(savedInstanceState)
+        daggerInjection()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_publisher)
-        presenter.apply {
-            attachLifecycle(this@PublisherActivity)
-            getData()
+        lifecycleScope.launchWhenStarted {
+            presenter.getData()
         }
     }
 
@@ -80,5 +81,9 @@ class PublisherActivity : AppCompatActivity(),
             throws.localizedMessage,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun setDialogShow(data: Boolean) {
+        openDialog(data)
     }
 }

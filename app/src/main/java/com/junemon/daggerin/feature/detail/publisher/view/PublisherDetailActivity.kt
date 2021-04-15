@@ -3,16 +3,19 @@ package com.junemon.daggerin.feature.detail.publisher.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
+import com.junemon.daggerin.base.adapter.BaseActivity
 import com.junemon.daggerin.databinding.ActivityDetailPublisherBinding
+import com.junemon.daggerin.di.injector.inject
 import com.junemon.daggerin.model.publisher.PublisherDetailEntity
 import com.junemon.daggerin.util.Constant
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import javax.inject.Inject
 
-class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
+class PublisherDetailActivity:BaseActivity(),PublisherDetailView {
     private val detailID by lazy { intent.getIntExtra(Constant.intentPublisherDetailKey,0) }
 
     @Inject
@@ -24,18 +27,16 @@ class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
     private lateinit var binding: ActivityDetailPublisherBinding
 
     private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getPublisherDetailActivityComponent().inject(this).injectActivity(this)
+        inject().getPublisherDetailActivityComponent().inject(this).injectActivity(this)
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
         super.onCreate(savedInstanceState)
+        daggerInjection()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_publisher)
-        presenter.apply {
-            attachLifecycle(this@PublisherDetailActivity)
-            getData(detailID)
+        lifecycleScope.launchWhenStarted {
+            presenter.getData(detailID)
         }
 
     }
@@ -57,5 +58,9 @@ class PublisherDetailActivity:AppCompatActivity(),PublisherDetailView {
             throws.localizedMessage,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun setDialogShow(data: Boolean) {
+        openDialog(data)
     }
 }

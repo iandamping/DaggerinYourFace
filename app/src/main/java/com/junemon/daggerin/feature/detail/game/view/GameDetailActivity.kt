@@ -3,16 +3,19 @@ package com.junemon.daggerin.feature.detail.game.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
+import com.junemon.daggerin.base.adapter.BaseActivity
 import com.junemon.daggerin.databinding.ActivityDetailGameBinding
+import com.junemon.daggerin.di.injector.inject
 import com.junemon.daggerin.model.game.GamesDetailEntity
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
 import com.junemon.daggerin.util.interfaces.LoadImageHelper
 import javax.inject.Inject
 
-class GameDetailActivity:AppCompatActivity(),
+class GameDetailActivity:BaseActivity(),
     GameDetailView {
 
     private val detailID by lazy { intent.getIntExtra(intentGamesDetailKey,0) }
@@ -24,8 +27,7 @@ class GameDetailActivity:AppCompatActivity(),
     lateinit var loadImageHelper: LoadImageHelper
 
     private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getGamesDetailActivityComponent().inject(this).injectActivity(this)
+        inject().getGamesDetailActivityComponent().inject(this).injectActivity(this)
 
     }
 
@@ -33,11 +35,9 @@ class GameDetailActivity:AppCompatActivity(),
         daggerInjection()
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_game)
-        presenter.apply {
-            attachLifecycle(this@GameDetailActivity)
-            getData(detailID)
+        lifecycleScope.launchWhenStarted {
+            presenter.getData(detailID)
         }
-
     }
 
 
@@ -60,5 +60,9 @@ class GameDetailActivity:AppCompatActivity(),
             throws.localizedMessage,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun setDialogShow(data: Boolean) {
+        openDialog(data)
     }
 }

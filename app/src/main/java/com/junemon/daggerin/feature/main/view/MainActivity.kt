@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.daggerin.MainApplication
 import com.junemon.daggerin.R
+import com.junemon.daggerin.base.adapter.BaseActivity
 import com.junemon.daggerin.databinding.ActivityMainBinding
 import com.junemon.daggerin.db.game.GameDbEntity
+import com.junemon.daggerin.di.injector.inject
 import com.junemon.daggerin.feature.detail.game.view.GameDetailActivity
 import com.junemon.daggerin.model.game.GameCallback
 import com.junemon.daggerin.util.Constant.intentGamesDetailKey
@@ -17,7 +20,7 @@ import com.junemon.daggerin.util.interfaces.RecyclerHelper
 import kotlinx.android.synthetic.main.item_games.view.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
     MainView {
 
     @Inject
@@ -30,20 +33,18 @@ class MainActivity : AppCompatActivity(),
     lateinit var loadImageHelper: LoadImageHelper
 
     private fun daggerInjection() {
-        (application as MainApplication)
-            .appComponent.getMainActivityComponent().inject(this).injectActivity(this)
+        inject().getMainActivityComponent().inject(this).injectActivity(this)
 
     }
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        daggerInjection()
         super.onCreate(savedInstanceState)
+        daggerInjection()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        presenter.apply {
-            attachLifecycle(this@MainActivity)
-            getData()
+        lifecycleScope.launchWhenStarted {
+            presenter.getData()
         }
     }
 
@@ -83,6 +84,10 @@ class MainActivity : AppCompatActivity(),
             throws.localizedMessage,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    override fun setDialogShow(data: Boolean) {
+        openDialog(data)
     }
 
 

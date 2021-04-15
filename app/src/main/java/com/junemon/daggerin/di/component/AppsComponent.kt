@@ -3,7 +3,7 @@ package com.junemon.daggerin.di.component
 import android.app.Application
 import com.junemon.daggerin.di.module.*
 import com.junemon.daggerin.di.scope.ApplicationScope
-import com.junemon.daggerin.feature.detail.game.view.component.GameDetailActivityComponent
+import com.junemon.daggerin.feature.detail.game.component.GameDetailActivityComponent
 import com.junemon.daggerin.feature.detail.publisher.component.PublisherDetailActivityComponent
 import com.junemon.daggerin.feature.main.component.MainActivityComponent
 import com.junemon.daggerin.feature.publisher.component.PublisherActivityComponent
@@ -13,19 +13,16 @@ import dagger.Component
 @ApplicationScope
 @Component(
     modules = [
-        LoadImageHelperModule::class,
         NetworkModule::class,
         DatabaseModule::class,
         RetrofitHelperModule::class,
         DatabaseHelperModule::class,
+        GlideModule::class,
+        LoadImageHelperModule::class,
         RecyclerHelperModule::class,
         AppSubComponent::class]
 )
 interface AppsComponent {
-
-    /* Cara subcomponent yang baru ada di MainActivityComponent
-    *
-    * kenapa kita injectApplication agar kita bisa mendapatkan application & init database module */
 
     fun getMainActivityComponent(): MainActivityComponent.Factory
 
@@ -34,9 +31,6 @@ interface AppsComponent {
     fun getGamesDetailActivityComponent(): GameDetailActivityComponent.Factory
 
     fun getPublisherDetailActivityComponent():PublisherDetailActivityComponent.Factory
-
-    /*//Ini adalah cara sub-component dari coding in flow
-    fun getPublisherActivityComponent(publisherActivityModule: PublisherActivityModule): PublisherActivityComponent*/
 
     @Component.Factory
     interface Factory {
